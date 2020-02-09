@@ -7,7 +7,7 @@ Take your time.
         Ha. ha.
     *[Oh, shut up.]
         Rude, aren't you?
-    *[...]
+    *[...] #0.5s
         Hellooo? Anybody home?
 -Now think fast!
     *[Wh-what?!]
@@ -16,5 +16,5 @@ Take your time.
         <b>Why not?!</b>
     *[Alright! I'm a thinkin']
         Good job, buddy!
-    *<4>[...]
+    *[...]
         Alright, I think you might be dead.

@@ -10,17 +10,21 @@ public class CustomInkScript : MonoBehaviour
 	//Basic Variables
 	public TextAsset inkJSONAsset;
 	private Story story;
+	public List<string> s_tags; //story tags 
+	//^^^MAKE PROVATE
+	
 	//UI Variables
 	public Button diaBox; //Dialogue Box : Switch this to a designated place in final
 	private TextMeshProUGUI diaText;
 	public Button buttonPrefab;
+	
 	//Timer Variables
 	public Image timer;
-	public float default_time = 3f;	//CHANGE TO PRIVATE; The default time for the timer
+	private float default_time = 3f; //The default time for the timer
+	public float set_time; //The time that is used in the timer
 	
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         story = new Story(inkJSONAsset.text);
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
     }
@@ -33,7 +37,8 @@ public class CustomInkScript : MonoBehaviour
 		diaText.text = GetNextLine();
 		if (!(story.currentChoices.Count <= 0)){
 			diaBox.interactable = false;
-			foreach (Choice choice in story.currentChoices){
+			for (int i=0; i<story.currentChoices.Count -1; i++){ //Goes through choices and uses all but the last
+				Choice choice = story.currentChoices[i];
 				Button choiceButton = Instantiate(buttonPrefab) as Button;
 				choiceButton.transform.SetParent(this.transform, false);
 				
@@ -44,7 +49,10 @@ public class CustomInkScript : MonoBehaviour
 					OnClickChoiceButton(choice);
 				});
 				
-				StartCoroutine(Countdown(default_time));
+				
+				//If there is a timer tag, adjust the time.
+				set_time = default_time;
+				StartCoroutine(Countdown(set_time));
 			}
 		}
 	}
@@ -70,6 +78,7 @@ public class CustomInkScript : MonoBehaviour
 		string txt = "NO NEXT LINE!"; 
 		if (story.canContinue){
 			txt=story.Continue();
+			s_tags = story.currentTags;
 		} else {
 			diaBox.interactable = false;
 		} return txt; 

@@ -1,0 +1,16 @@
+#---How to Format Unity in Github---#
+
+#--Software Needed--#
+>Github Desktop (for ease of access)
+
+#--Steps--#
+1. Open Github Desktop
+2. Clone the 'Project Command' Repository
+3. Initialize Git LFS!!!!
+4. Open a scene from the Assets Folder (in the Repo)
+5. *Import 'Ink/Unity Integration' from the Asset Store
+6. Voila! We're done.
+
+(5.5. Optionally, you can install 'Github for Unity' from the Asset Store. This will make it so you can push changes from within Unity.)
+
+*On any new machine, you will have to re-import anything gotten off of the asset store. This was the *simplest* way to get this working.

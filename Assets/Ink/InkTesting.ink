@@ -11,7 +11,7 @@ Take your time.
         Hellooo? Anybody home?
 -Now think fast!
     *[Wh-what?!]
-        Your idiocy is noted.
+        Your idiocy is noted!
     *[I don't wanna!]
         <b>Why not?!</b>
     *[Alright! I'm a thinkin']

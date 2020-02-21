@@ -1,18 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float spawnDelay = 0.3f;
+	
+	public GameObject car;
+	
+	public Transform[] spawnPoints;
+	
+	float nextTimeToSpawn = 0f;
+	
+	void Start(){
+		spawnPoints = GetComponentsInChildren<Transform>();
+	}
+	
+	void Update(){
+		if (nextTimeToSpawn <=Time.time){
+			SpawnCar();
+			nextTimeToSpawn = Time.time+spawnDelay;
+		}
+	}
+	
+	void SpawnCar(){
+		int randomIndex = Random.Range(0, spawnPoints.Length);
+		Transform spawnPoint = spawnPoints[randomIndex];
+		
+		Instantiate(car, spawnPoint.position, spawnPoint.rotation);
+	}
 }

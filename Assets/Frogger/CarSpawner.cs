@@ -22,9 +22,11 @@ public class CarSpawner : MonoBehaviour
 	}
 	
 	void SpawnCar(){
-		int randomIndex = Random.Range(0, spawnPoints.Length);
-		Transform spawnPoint = spawnPoints[randomIndex];
-		
-		Instantiate(car, spawnPoint.position, spawnPoint.rotation);
+		if (spawnPoints.Length != 0){
+			int randomIndex = Random.Range(1, spawnPoints.Length);
+			Transform spawnPoint = spawnPoints[randomIndex];
+			
+			Instantiate(car, spawnPoint.position, spawnPoint.rotation);
+		}
 	}
 }

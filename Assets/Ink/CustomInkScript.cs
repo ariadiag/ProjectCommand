@@ -11,7 +11,7 @@ public class CustomInkScript : MonoBehaviour
 	public TextAsset inkJSONAsset;
 	private Story story;
 	public List<string> s_tags; //story tags 
-	//^^^MAKE PROVATE
+	//^^^MAKE PRIVATE
 	
 	//UI Variables
 	public Button diaBox; //Dialogue Box : Switch this to a designated place in final

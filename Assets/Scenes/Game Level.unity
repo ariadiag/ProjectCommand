@@ -13437,7 +13437,7 @@ GameObject:
   - component: {fileID: 4246970299468339153}
   - component: {fileID: 4246970299468339154}
   m_Layer: 0
-  m_Name: OnScreenCanvas
+  m_Name: HelmetCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

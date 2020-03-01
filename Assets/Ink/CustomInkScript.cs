@@ -35,9 +35,11 @@ public class CustomInkScript : MonoBehaviour
 		//RESET EVERYTHING
 		ClearUI(); //Reset the choices if needed
 		ClearTimer();
-		diaBox.interactable = true;
 		//SET THE NEXT LINE OF TEXT
 		diaText.text = GetNextLine();
+			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
+			//Read(GetNextLine());
+		diaBox.interactable = true;
 		//SET THE CHOICES IF APPLICABLE
 		if (!(story.currentChoices.Count <= 0)){
 			inChoiceTime = true;

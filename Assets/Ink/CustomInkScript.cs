@@ -10,6 +10,7 @@ public class CustomInkScript : MonoBehaviour
 	//Basic Variables
 	public TextAsset inkJSONAsset;
 	private Story story;
+	private int maxChoice; //holds the index of the last choice (always the silent choice)
 	public List<string> s_tags; //story tags 
 	//^^^MAKE PRIVATE
 	
@@ -20,8 +21,9 @@ public class CustomInkScript : MonoBehaviour
 	
 	//Timer Variables
 	public Image timer;
-	private float default_time = 3f; //The default time for the timer
-	public float set_time; //The time that is used in the timer
+	public static float default_time = 5f; //The default time for the timer
+	private float set_time = default_time; //The time that is used in the timer
+	private bool inChoiceTime = false;
 	
     // Start is called before the first frame update
     void Start(){
@@ -30,30 +32,45 @@ public class CustomInkScript : MonoBehaviour
     }
 	
 	public void Talk(){ //Main function for moving dialogue
-		clearUI(); //Reset the choices if needed
-		clearTimer();
+		//RESET EVERYTHING
+		ClearUI(); //Reset the choices if needed
+		ClearTimer();
 		diaBox.interactable = true;
-		
+		//SET THE NEXT LINE OF TEXT
 		diaText.text = GetNextLine();
+		//SET THE CHOICES IF APPLICABLE
 		if (!(story.currentChoices.Count <= 0)){
+			inChoiceTime = true;
+			maxChoice = story.currentChoices.Count-1;
 			diaBox.interactable = false;
-			for (int i=0; i<story.currentChoices.Count -1; i++){ //Goes through choices and uses all but the last
-				Choice choice = story.currentChoices[i];
-				Button choiceButton = Instantiate(buttonPrefab) as Button;
-				choiceButton.transform.SetParent(this.transform, false);
-				
-				TextMeshProUGUI choiceText = choiceButton.GetComponentInChildren<TextMeshProUGUI>();
-				choiceText.text = choice.text;
-				
-				choiceButton.onClick.AddListener(delegate {
-					OnClickChoiceButton(choice);
-				});
-				
-				
-				//If there is a timer tag, adjust the time.
-				set_time = default_time;
-				StartCoroutine(Countdown(set_time));
-			}
+			DisplayChoices();
+			SetTimerTime();
+		}
+		//RUN TIMER
+		StartCoroutine(Countdown(set_time));
+	}
+	
+	void SetTimerTime(){
+		//Setting the timer based on ink file!
+		string _lastChoice = story.currentChoices[maxChoice].text;
+		if (_lastChoice.Contains("<")){
+			string numAsString = _lastChoice.Split('<','>')[1];
+			set_time = float.Parse(numAsString);
+		}
+	}
+	
+	void DisplayChoices(){
+		for (int i=0; i<story.currentChoices.Count -1; i++){ //Goes through choices and uses all but the last
+			Choice choice = story.currentChoices[i];
+			Button choiceButton = Instantiate(buttonPrefab) as Button;
+			choiceButton.transform.SetParent(this.transform, false);
+			
+			TextMeshProUGUI choiceText = choiceButton.GetComponentInChildren<TextMeshProUGUI>();
+			choiceText.text = choice.text;
+			
+			choiceButton.onClick.AddListener(delegate {
+				OnClickChoiceButton(choice);
+			});
 		}
 	}
 	
@@ -62,16 +79,18 @@ public class CustomInkScript : MonoBehaviour
 		Talk();
 	}
 	
-	void clearUI(){
+	void ClearUI(){
 		int childCount = this.transform.childCount;
 		for (int i = childCount -1; i>=0; --i){
 			GameObject.Destroy(this.transform.GetChild(i).gameObject);
 		}
 	}
 	
-	void clearTimer(){
+	void ClearTimer(){
 		StopAllCoroutines();
 		timer.fillAmount = 1;
+		set_time = default_time;
+		inChoiceTime = false;
 	}
 	
 	string GetNextLine(){
@@ -86,12 +105,17 @@ public class CustomInkScript : MonoBehaviour
 
     IEnumerator Countdown(float duration){
 		float timeLeft = duration;
-		while (timeLeft>0){
+		while (timeLeft>0){ //The Actual Timer
 			timeLeft -= Time.deltaTime;
-			timer.fillAmount = timeLeft/duration;
-			yield return null;
+			if (inChoiceTime){ //don't show timer going down if not a choice!
+				timer.fillAmount = timeLeft/duration;
+			} yield return null;
 		} 
-		story.ChooseChoiceIndex(3);
+		//If it's a choice, then automatically choose 3
+		if (!(story.currentChoices.Count <= 0)){
+			story.ChooseChoiceIndex(maxChoice);
+		}
+		//If not, just continue
 		Talk();
 	}
 }

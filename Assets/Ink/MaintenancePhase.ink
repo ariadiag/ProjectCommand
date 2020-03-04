@@ -31,7 +31,7 @@ Answer Call #Roy
     *[Thank you for calling TPS, how may I help?]
     
     *[Captain Estrada? This is TPS.]
-        "Perfect, just who I needed to talk to." #Roy
+        Perfect, just who I needed to talk to. #Roy
     *[TPS here. Who am I speaking with?]
         My name is Roy Estrada. I'm the captain of the Redliner. #Roy
             **[It's nice to meet you, Captain Estrada.]
@@ -74,7 +74,7 @@ Answer Call #Roy
     *[If you need me to.]
         ...One second... #Roy
     *[...]
-        Hello? Do you think you could help? #Roy
+        Hello? My communication may be spotty, but anyways... #Roy
 -I'll pass communications over to Aaron, but I'll be standing nearby if you need any help. #Roy
     //Static/Feedback
     Uh... Hello? Can you hear me? This is Aaron Bedford. #Aaron
@@ -91,10 +91,10 @@ Answer Call #Roy
 -Well, um, I ran through the primary engine checklist. #Aaron
     Nothing is seriously wrong, but I know I probably messed something up. The temperature keeps rising and it won't go down. #Aaron
     It says to call you in case of emergency, and well, I didn't want to take anay chances, you know? #Aaron
-    *[Simple enough. Please tell me your engine's ID code.]
-    *[Hm, okay, Aaron. First, tell me the engine's ID code.]
+    *[Okay, Aaron. First, tell me the engine's ID code.]
     *[What's the ID code of your engine?]
     *[Slow down. What's your ID code?]
+    *[...]
     
 -Oh, right! Give me a minute here... #Aaron
     Sorry about this... almost there... #Aaron

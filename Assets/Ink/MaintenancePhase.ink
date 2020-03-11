@@ -105,5 +105,52 @@ Answer Call #Roy
     It's 93015-H3. #Aaron
     Oh, wait... No, drop the last 3. #Aaron
     It's 93015-H.
+    *[It's no problem at all!]
     
-->DONE
+    *[Let me take a look.]
+    
+    *[Oh, don't worry. Take your time...]
+    ~a_trust = a_trust + 1
+    *[...]
+    
+-->DONE
+
+=PE2Answer
+    *[From this report, it looks like the emission valves are closed.]
+        Okay, let me try this... #Aaron
+        Um... nothing is hapening, the temperature is the same. #Aaron
+        Maybe, you could look again? #Aaron
+        ->PE2Answer
+    *[Hey, Aaron, it looks like the ventilation stopped working.]
+    
+    *[Hmm, looks like the CO2 levels are clogging the alternator.]
+        Okay, let me try this... #Aaron
+        Um... nothing is hapening, the temperature is the same. #Aaron
+        Maybe, you could look again? #Aaron
+        ->PE2Answer
+    *[This it may be the secondary pistons.]
+        Okay, let me try this... #Aaron
+        Um... nothing is hapening, the temperature is the same. #Aaron
+        Maybe, you could look again? #Aaron
+        ->PE2Answer
+-Well, it looks good over here so far. Thank you so much! Have a good night! #Aaron
+
+    End Call.
+-->DONE
+
+==PhaseEvent3==
+*[Answer Call.]
+
+-Hi, call me Harper. Got another problem for you. #Harper
+Annoying-ass feedback coming over the intercom system. #Harper
+Estrada sent Bedford into the Communications Room. We need help, can you do it? #Harper
+    *[Yeah, of course, Harper.]
+    *[That's why I'm here.]
+    *[What am I going to do, leave?]
+    *[...]
+    
+Good, I know we're in range. #Harper
+Check our map file and tell me which intercom box is broadcasting the error. #Harper
+    *[Alright, let me check.]
+    
+-->DONE

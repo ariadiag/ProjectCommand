@@ -1,3 +1,6 @@
+INCLUDE MidPhase
+INCLUDE GoPhase
+
 //NOTES
 //-- Tag Guide --//
     //#R = Roy

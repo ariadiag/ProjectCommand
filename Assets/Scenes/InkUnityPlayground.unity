@@ -128,26 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1755715137633143378, guid: e697abcb825b4514fbc00613bfeea90f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755715138072975406, guid: e697abcb825b4514fbc00613bfeea90f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755715139386583630, guid: e697abcb825b4514fbc00613bfeea90f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1755715139386583631, guid: e697abcb825b4514fbc00613bfeea90f,
-        type: 3}
-      propertyPath: inkJSONAsset
-      value: 
-      objectReference: {fileID: 4900000, guid: 8c1bfc857836c3d4a9dcf1495e13f567, type: 3}
     - target: {fileID: 7351517635176200492, guid: e697abcb825b4514fbc00613bfeea90f,
         type: 3}
       propertyPath: m_Name

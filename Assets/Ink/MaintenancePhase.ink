@@ -249,11 +249,27 @@ Hello TPS, this is Medical Dispatch. #MD
             Correct... #Harper
         *[...]
     
-    -One of the engines blew in the jolt. It crashed our EMP shied. #Harper
+    -One of the engines blew in the jolt. It crashed our energy shields. #Harper
     If it happens again without that shield, we're done. Get it up with me, now. #Harper
         **[Harper, we've got this.]
         **[I can do that!]
-        **[Aaron's screaming makes it hard to concentrate.]
+        **[The screaming makes it hard to concentrate.]
             I couldn't agree more... Poor boy. #Harper
         **[...]
+        
+    -I made it to the bridge. It looks sketchy in here. #Harper
+        Servos ar- #Harper
+    Fuck. Okay, listen. I know how to fix this.
+        I just need your help rerouting some of the power back to the shields.
+        *[I'll follow your lead.]
+        Good. You have a shield map, don't you? #Harper
+            **[Right, let me check.]
+        *[If you say so, let me get the file.]
+        *[Works for me. I'll be right back.]
+        *[...]
+            ~h_trust = h_trust - 1
+            Hey! This isn't the time to be slacking! #Harper
+            Just... Check whatever files you have and get back to me. #Harper
+    
+    -
 -->DONE

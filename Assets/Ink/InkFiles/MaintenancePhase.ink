@@ -198,6 +198,9 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
     *[Of course, Sunny.]
     *[By the time you get a word out?]
     *[...]
+    
+*[...]
+    ->PE3A
 
 //PLAYER HITS MEDICAL DISPATCH BUTTON
 -->DONE
@@ -270,6 +273,133 @@ Hello TPS, this is Medical Dispatch. #MD
             ~h_trust = h_trust - 1
             Hey! This isn't the time to be slacking! #Harper
             Just... Check whatever files you have and get back to me. #Harper
+-->DONE
     
-    -
+=PE4B
+*[Harper, I'm back. I need the ship model number.]
+*[What's the Redliner's ship model number?]
+*[I need your ship model number, now!]
+    Give me time! #Harper
+*[<500>...]
+    ~h_trust = h_trust - 1
+    Useless, what do you need? The model number? #Harper
+    
+-Right, one minute... #Harper
+    This junk is an Argon Albatross Mk III. #Harper
+    Practically falling apart. #Harper
+    *[Now, give me a second.]
+    *[Oh, is it now? I couldn't tell.]
+    ~h_trust = h_trust - 1
+        Just do your job. #Harper
+    *[Thanks, Harper.]
+    *[...]
+    
+-->DONE
+
+=PE4C
+Alright, so I need to input something? #Harper
+    *[Yeah: Beta, Omicron, Alpha, Epsilon]
+    *[Alpha, Beta, Epsilon, Omicron]
+    *[E, A, O, B]
+        E, A, O, V? B?
+    *[...]
+    
+-...Nothing's happening. Are you sure this is right? #Harper
+    Try again. Just read it out slo- #Harper
+    FUCK! #Harper
+    ...... #Harper
+    We're being thrown again. #Harper
+    
+-Okay, let me check something... #Harper
+    It could be these buttons, not your inputs. #Harper
+    *[Be careful, Harper.]
+        ~h_trust = h_trust + 1
+        Don't worry. #Harper
+    *[Take your time.]
+    *[Hurry up.]
+    ~h_trust = h_trust - 1
+        What do you think I'm doing? #Harper
+    *[...]
+        Looking at them now. #Harper
+
+-Okay, I'm in the panel... #Harper
+    Give me a second... #Harper
+    Got it- wait. #Harper
+    Almost... there.... #Harper
+    Done. Give me that sequence again.
+    -(opts)
+    *[Beta, Omicron, Alpha, Epsilon.]
+        Is that what you said the first time? It's not working. #Harper
+        ->opts
+    *[Alpha, Beta, Epsilon, Omicron.]
+        ->opts
+    *[Epsilon, Alpha, Omicron, Beta.]
+        ->opts
+    *[Omicron, Epsilon, Beta, Alpha.]
+    //Correct Ans^
+    *[...]
+        ->opts
+    
+    
+-It's working! #Harper
+Okay, the electron count is rising... #Harper
+...Stable so far... #Harper
+We should be in the clear now. I'm going to stabilize the electromagnetic field. #Harper
+Before you go, I need on more thing. Encrypt our communication. #Harper
+I know it sounds crazy, but I'm not risking anything. #Harper
+    *[Harper, what do you mean?]
+    *[You sure about that?]
+    *[Encrypt it, why?]
+    *[...]
+    ~h_trust = h_trust - 1
+        Hey, communicator! Fucking communicate. #Harper
+        
+-->PhaseEvent5
+
+==PhaseEvent5==
+I'm just-I'm tired of this shit. I'm losing my patience. #Harper
+What if... what if this is an outside attack? #Harper
+I don't know... Take precaution with me. #Harper
+    *[No, no, I'm with you.]
+    *[Let me get access to our Executive Office.]
+    *[If you say so, I'll get into the Exec Office.]
+    *[...]
+-->DONE
+
+=PE5A
+You're back, get the codes? #Harper
+    -(opts)
+    *[I think we're being hacked!]
+    *[My colleague's PC crashed.]
+    *[Nope, her computer crashed.]
+    *[...]
+        Talk to me dammit! My patience is wearing thin.
+        ->opts
+
+-(choice)Hm. Okay, I can help. Give me station's routing number and firewall code. #Harper
+    I'll handle the rest. #Harper
+    *[Sure, let me get that for you.]
+    *[...]
+        ->choice
+
+-->DONE
+
+=PE5B
+*[Return Call.]
+    Hello? Got the information? #Harper
+    -(opts)
+        *[L346HY8 and 114367]
+            That didn't seem to work.
+            ->opts
+        *[J48493D and 506-03]
+            Okay, thanks. Let me... let me just get in here... #Harper
+        *[U903AA and I928K]
+            Try... again. #Harper
+            ->opts
+        *[...]
+            Whenever you're ready. #Harper
+            ->opts
+*[...]
+    ->PE5B
+
 -->DONE

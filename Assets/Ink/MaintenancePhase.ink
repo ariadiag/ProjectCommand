@@ -198,6 +198,9 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
     *[Of course, Sunny.]
     *[By the time you get a word out?]
     *[...]
+    
+*[...]
+    ->PE3A
 
 //PLAYER HITS MEDICAL DISPATCH BUTTON
 -->DONE
@@ -324,9 +327,79 @@ Alright, so I need to input something? #Harper
     Got it- wait. #Harper
     Almost... there.... #Harper
     Done. Give me that sequence again.
+    -(opts)
     *[Beta, Omicron, Alpha, Epsilon.]
+        Is that what you said the first time? It's not working. #Harper
+        ->opts
     *[Alpha, Beta, Epsilon, Omicron.]
+        ->opts
     *[Epsilon, Alpha, Omicron, Beta.]
+        ->opts
     *[Omicron, Epsilon, Beta, Alpha.]
+    //Correct Ans^
+    *[...]
+        ->opts
     
+    
+-It's working! #Harper
+Okay, the electron count is rising... #Harper
+...Stable so far... #Harper
+We should be in the clear now. I'm going to stabilize the electromagnetic field. #Harper
+Before you go, I need on more thing. Encrypt our communication. #Harper
+I know it sounds crazy, but I'm not risking anything. #Harper
+    *[Harper, what do you mean?]
+    *[You sure about that?]
+    *[Encrypt it, why?]
+    *[...]
+    ~h_trust = h_trust - 1
+        Hey, communicator! Fucking communicate. #Harper
+        
+-->PhaseEvent5
+
+==PhaseEvent5==
+I'm just-I'm tired of this shit. I'm losing my patience. #Harper
+What if... what if this is an outside attack? #Harper
+I don't know... Take precaution with me. #Harper
+    *[No, no, I'm with you.]
+    *[Let me get access to our Executive Office.]
+    *[If you say so, I'll get into the Exec Office.]
+    *[...]
+-->DONE
+
+=PE5A
+You're back, get the codes? #Harper
+    -(opts)
+    *[I think we're being hacked!]
+    *[My colleague's PC crashed.]
+    *[Nope, her computer crashed.]
+    *[...]
+        Talk to me dammit! My patience is wearing thin.
+        ->opts
+
+-(choice)Hm. Okay, I can help. Give me station's routing number and firewall code. #Harper
+    I'll handle the rest. #Harper
+    *[Sure, let me get that for you.]
+    *[...]
+        ->choice
+
+-->DONE
+
+=PE5B
+*[Return Call.]
+    Hello? Got the information? #Harper
+    -(opts)
+        *[L346HY8 and 114367]
+            That didn't seem to work.
+            ->opts
+        *[J48493D and 506-03]
+            Okay, thanks. Let me... let me just get in here... #Harper
+        *[U903AA and I928K]
+            Try... again. #Harper
+            ->opts
+        *[...]
+            Whenever you're ready. #Harper
+            ->opts
+*[...]
+    ->PE5B
+
 -->DONE

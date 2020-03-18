@@ -1,0 +1,47 @@
+==Fake1==
+    Error in transmission #fake #breathing.ogg
+        *[Hello?]
+            ->Fake1
+        *[Who is this?]
+            ->Fake1
+        *[End Call.]
+            ->EndCall
+        *[...]
+            ->Fake1
+
+==Fake2==
+    Hello, thank you for calling PhaseX Communications! #Fake
+    How may we help you? #Fake
+        *[Who is this?]
+            This is PhaseX Communications. #Fake
+            We received a call from TPS two hours ago. #Fake
+            Do you still require our assistance? #Fake
+            *[Yes.]
+                Great! #Fake
+                TODO: Finish this???
+                We'll call you back once it's over. #Fake
+            *[No.]
+                Understood. Thank you for your business. #Fake
+            *[...]
+                Hello? Is anyone there? #Fake
+        *[Hang up.]
+        *[Stop calling.]
+        *[...]
+            Hello? Is anyone there? #Fake
+            *[Who am I talking to?]
+                This is PhaseX. You called? #Fake
+                    *[No, I didn't.]
+                        I have here, a call from TPS. #Fake
+                            *[I'm hanging up.]
+                    *[Someone else called.]
+                        What? You're breaking up. #Fake
+                    *[...]
+            *[Could you stop calling?]
+            *[End call.]
+            *[...]
+            
+- ->EndCall
+
+==EndCall==
+.....Goodbye. #Fake
+->DONE

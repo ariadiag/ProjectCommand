@@ -270,6 +270,63 @@ Hello TPS, this is Medical Dispatch. #MD
             ~h_trust = h_trust - 1
             Hey! This isn't the time to be slacking! #Harper
             Just... Check whatever files you have and get back to me. #Harper
+-->DONE
     
-    -
+=PE4B
+*[Harper, I'm back. I need the ship model number.]
+*[What's the Redliner's ship model number?]
+*[I need your ship model number, now!]
+    Give me time! #Harper
+*[<500>...]
+    ~h_trust = h_trust - 1
+    Useless, what do you need? The model number? #Harper
+    
+-Right, one minute... #Harper
+    This junk is an Argon Albatross Mk III. #Harper
+    Practically falling apart. #Harper
+    *[Now, give me a second.]
+    *[Oh, is it now? I couldn't tell.]
+    ~h_trust = h_trust - 1
+        Just do your job. #Harper
+    *[Thanks, Harper.]
+    *[...]
+    
+-->DONE
+
+=PE4C
+Alright, so I need to input something? #Harper
+    *[Yeah: Beta, Omicron, Alpha, Epsilon]
+    *[Alpha, Beta, Epsilon, Omicron]
+    *[E, A, O, B]
+        E, A, O, V? B?
+    *[...]
+    
+-...Nothing's happening. Are you sure this is right? #Harper
+    Try again. Just read it out slo- #Harper
+    FUCK! #Harper
+    ...... #Harper
+    We're being thrown again. #Harper
+    
+-Okay, let me check something... #Harper
+    It could be these buttons, not your inputs. #Harper
+    *[Be careful, Harper.]
+        ~h_trust = h_trust + 1
+        Don't worry. #Harper
+    *[Take your time.]
+    *[Hurry up.]
+    ~h_trust = h_trust - 1
+        What do you think I'm doing? #Harper
+    *[...]
+        Looking at them now. #Harper
+
+-Okay, I'm in the panel... #Harper
+    Give me a second... #Harper
+    Got it- wait. #Harper
+    Almost... there.... #Harper
+    Done. Give me that sequence again.
+    *[Beta, Omicron, Alpha, Epsilon.]
+    *[Alpha, Beta, Epsilon, Omicron.]
+    *[Epsilon, Alpha, Omicron, Beta.]
+    *[Omicron, Epsilon, Beta, Alpha.]
+    
 -->DONE

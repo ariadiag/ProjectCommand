@@ -25,6 +25,9 @@ public class CustomInkScript : MonoBehaviour
 	private float set_time = default_time; //The time that is used in the timer
 	private bool inChoiceTime = false;
 	
+	//Read Variables
+	public float r_speed = 0.03f;
+	
     // Start is called before the first frame update
     void Start(){
         story = new Story(inkJSONAsset.text);
@@ -34,11 +37,14 @@ public class CustomInkScript : MonoBehaviour
 	public void Talk(){ //Main function for moving dialogue
 		//RESET EVERYTHING
 		ClearUI(); //Reset the choices if needed
-		ClearTimer();
+		ClearTimer(); //Reset the timer and all the things
+		
+		//TODO: FindSpeaker(); read tags
+		
 		//SET THE NEXT LINE OF TEXT
-		diaText.text = GetNextLine();
+		//diaText.text = GetNextLine();
 			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
-			//Read(GetNextLine());
+		Read(GetNextLine());
 		diaBox.interactable = true;
 		//SET THE CHOICES IF APPLICABLE
 		if (!(story.currentChoices.Count <= 0)){
@@ -50,6 +56,11 @@ public class CustomInkScript : MonoBehaviour
 		}
 		//RUN TIMER
 		StartCoroutine(Countdown(set_time));
+	}
+	
+	void Read(string line){
+		diaText.text = "";
+		yield return StartCoroutine(TypeWriter(line));
 	}
 	
 	void SetTimerTime(){
@@ -119,5 +130,12 @@ public class CustomInkScript : MonoBehaviour
 		}
 		//If not, just continue
 		Talk();
+	}
+
+	IEnumerator TypeWriter(string line){
+		foreach (char c in line){
+			diaText.text += c;
+			yield return new WaitForSeconds(r_speed);
+		}
 	}
 }

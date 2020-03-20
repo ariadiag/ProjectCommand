@@ -60,7 +60,7 @@ public class CustomInkScript : MonoBehaviour
 	
 	void Read(string line){
 		diaText.text = "";
-		yield return StartCoroutine(TypeWriter(line));
+		//yield return StartCoroutine(TypeWriter(line));
 	}
 	
 	void SetTimerTime(){

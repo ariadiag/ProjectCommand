@@ -21,7 +21,7 @@ VAR s_trust = 10 //Sunny's trust
 TODO: DEBUG MODE
 VAR DEBUG = true
 {DEBUG:
-        ->PhaseEvent3
+        ->PhaseEvent2
     -else:
         Do nothing...
 }

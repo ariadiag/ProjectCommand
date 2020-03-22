@@ -27,12 +27,32 @@ public class CustomInkScript : MonoBehaviour
 	
 	//Read Variables
 	public float r_speed = 0.03f;
+	private bool isReading = false;
 	
     // Start is called before the first frame update
     void Start(){
         story = new Story(inkJSONAsset.text);
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
     }
+	
+	//ALLOW KEYBOARD SELECTION! (fix later?)
+	void FixedUpdate(){
+		if (inChoiceTime){
+			if(Input.GetKeyDown("1") && story.currentChoices.Count > 1){
+				story.ChooseChoiceIndex(0);
+				Talk();
+			} else if (Input.GetKeyDown("2") && story.currentChoices.Count > 2){
+				story.ChooseChoiceIndex(1);
+				Talk();
+			} else if(Input.GetKeyDown("3") && story.currentChoices.Count > 3){
+				story.ChooseChoiceIndex(2);
+				Talk();
+			} else if (Input.GetKeyDown("4") && story.currentChoices.Count > 4){
+				story.ChooseChoiceIndex(3);
+				Talk();
+			}
+		}
+	}
 	
 	public void Talk(){ //Main function for moving dialogue
 		//RESET EVERYTHING
@@ -45,7 +65,7 @@ public class CustomInkScript : MonoBehaviour
 		//diaText.text = GetNextLine();
 			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
 		Read(GetNextLine());
-		diaBox.interactable = true;
+		
 		//SET THE CHOICES IF APPLICABLE
 		if (!(story.currentChoices.Count <= 0)){
 			inChoiceTime = true;
@@ -58,9 +78,13 @@ public class CustomInkScript : MonoBehaviour
 		StartCoroutine(Countdown(set_time));
 	}
 	
-	void Read(string line){
+	bool Read(string line){
 		diaText.text = "";
-		//yield return StartCoroutine(TypeWriter(line));
+		StartCoroutine(TypeWriter(line));
+		diaBox.interactable = true;
+		//while(isReading){
+		//} 
+		return true; 
 	}
 	
 	void SetTimerTime(){
@@ -117,6 +141,10 @@ public class CustomInkScript : MonoBehaviour
 	}
 
     IEnumerator Countdown(float duration){
+		while(isReading){ //Don't start timer until all text on screen!
+			yield return new WaitForSeconds(0.1f);
+		} 
+		//Countdown! Do the thing!
 		float timeLeft = duration;
 		while (timeLeft>0){ //The Actual Timer
 			timeLeft -= Time.deltaTime;
@@ -133,9 +161,11 @@ public class CustomInkScript : MonoBehaviour
 	}
 
 	IEnumerator TypeWriter(string line){
+		isReading = true;
 		foreach (char c in line){
 			diaText.text += c;
 			yield return new WaitForSeconds(r_speed);
 		}
+		isReading = false;
 	}
 }

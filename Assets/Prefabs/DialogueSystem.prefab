@@ -733,9 +733,9 @@ MonoBehaviour:
   m_fontSize: 20
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 24.39
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -912,6 +912,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 5006394798871531929, guid: ec9eab5206f3c704694c6e4365cacea1,
     type: 3}
   timer: {fileID: 1755715139108319896}
+  r_speed: 0.03
 --- !u!114 &1755715139386583628
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 
-public class CustomInkScript : MonoBehaviour
+public class InkReader : MonoBehaviour
 {
 	//Basic Variables
 	public TextAsset inkJSONAsset;
 	private Story story;
+	public bool storyOver;
 	private int maxChoice; //holds the index of the last choice (always the silent choice)
 	public List<string> s_tags; //story tags 
 	//^^^MAKE PRIVATE
@@ -32,11 +33,12 @@ public class CustomInkScript : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         story = new Story(inkJSONAsset.text);
+		storyOver = false;
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
     }
 	
 	//ALLOW KEYBOARD SELECTION! (fix later?)
-	void FixedUpdate(){
+	void Update(){
 		if (inChoiceTime){
 			if(Input.GetKeyDown("1") && story.currentChoices.Count > 1){
 				story.ChooseChoiceIndex(0);
@@ -51,6 +53,10 @@ public class CustomInkScript : MonoBehaviour
 				story.ChooseChoiceIndex(3);
 				Talk();
 			}
+		} if (diaBox.interactable){
+			if(Input.GetKeyDown("Space")){
+				Talk();
+			}
 		}
 	}
 	
@@ -62,7 +68,6 @@ public class CustomInkScript : MonoBehaviour
 		//TODO: FindSpeaker(); read tags
 		
 		//SET THE NEXT LINE OF TEXT
-		//diaText.text = GetNextLine();
 			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
 		Read(GetNextLine());
 		
@@ -82,8 +87,6 @@ public class CustomInkScript : MonoBehaviour
 		diaText.text = "";
 		StartCoroutine(TypeWriter(line));
 		diaBox.interactable = true;
-		//while(isReading){
-		//} 
 		return true; 
 	}
 	
@@ -131,11 +134,12 @@ public class CustomInkScript : MonoBehaviour
 	}
 	
 	string GetNextLine(){
-		string txt = "NO NEXT LINE!"; 
+		string txt = "Conversation Ended";
 		if (story.canContinue){
 			txt=story.Continue();
 			s_tags = story.currentTags;
 		} else {
+			storyOver = true;
 			diaBox.interactable = false;
 		} return txt; 
 	}

@@ -92,7 +92,7 @@ Answer Call #Roy
     
 -Well, um, I ran through the primary engine checklist. #Aaron
     Nothing is seriously wrong, but I know I probably messed something up. The temperature keeps rising and it won't go down. #Aaron
-    It says to call you in case of emergency, and well, I didn't want to take anay chances, you know? #Aaron
+    It says to call you in case of emergency, and well, I didn't want to take any chances, you know? #Aaron
     *[Okay, Aaron. First, tell me the engine's ID code.]
     *[What's the ID code of your engine?]
     *[Slow down. What's your ID code?]
@@ -103,14 +103,14 @@ Answer Call #Roy
     Okay, I got it! #Aaron
     It's 93015-H3. #Aaron
     Oh, wait... No, drop the last 3. #Aaron
-    It's 93015-H.
+    It's 93015-H. #Aaron
     *[It's no problem at all!]
     
     *[Let me take a look.]
     
     *[Oh, don't worry. Take your time...]
     ~a_trust = a_trust + 1
-        Oh, thank you. Uh, well, I'll wait here...
+        Oh, thank you. Uh, well, I'll wait here... #Aaron
     *[...]
     
 //POP UP TUT. PLAYER SEARCHES ENGINE ROOM LOG. 

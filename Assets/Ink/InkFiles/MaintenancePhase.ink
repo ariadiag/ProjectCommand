@@ -1,4 +1,4 @@
-//INCLUDE MidPhase
+INCLUDE MidPhase
 //INCLUDE GoPhase
 INCLUDE FakeCalls
 

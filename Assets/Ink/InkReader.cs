@@ -12,13 +12,22 @@ public class InkReader : MonoBehaviour
 	private Story story;
 	public bool storyOver;
 	private int maxChoice; //holds the index of the last choice (always the silent choice)
-	public List<string> s_tags; //story tags 
+	public List<string> s_tags; //story tags 0 is always speaker, 1 ?
 	//^^^MAKE PRIVATE
 	
 	//UI Variables
 	public Button diaBox; //Dialogue Box : Switch this to a designated place in final
 	private TextMeshProUGUI diaText;
 	public Button buttonPrefab;
+	//Speaker Variables
+	private string currentSpeaker;
+	public Image sPORTRAIT;
+	public Sprite _RoyPortrait;
+	public Sprite _AaronPortrait;
+	public Sprite _HarperPortrait;
+	public Sprite _SunnyPortrait;
+	public Sprite _MDPortrait;
+	public Sprite _nullPortrait;
 	
 	//Timer Variables
 	public Image timer;
@@ -54,7 +63,7 @@ public class InkReader : MonoBehaviour
 				Talk();
 			}
 		} if (diaBox.interactable){
-			if(Input.GetKeyDown("Space")){
+			if(Input.GetKeyDown("space")){
 				Talk();
 			}
 		}
@@ -65,11 +74,11 @@ public class InkReader : MonoBehaviour
 		ClearUI(); //Reset the choices if needed
 		ClearTimer(); //Reset the timer and all the things
 		
-		//TODO: FindSpeaker(); read tags
 		
 		//SET THE NEXT LINE OF TEXT
 			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
 		Read(GetNextLine());
+		FindSpeaker(); //read tags to find the current speaker, change img to match
 		
 		//SET THE CHOICES IF APPLICABLE
 		if (!(story.currentChoices.Count <= 0)){
@@ -83,6 +92,37 @@ public class InkReader : MonoBehaviour
 		StartCoroutine(Countdown(set_time));
 	}
 	
+	void FindSpeaker(){
+		if (s_tags.Count != 0){
+			if (s_tags[0] != currentSpeaker){
+				currentSpeaker = s_tags[0];
+				
+				switch (currentSpeaker){
+					case "Aaron":
+						sPORTRAIT.sprite = _AaronPortrait;
+						break;
+					case "Harper":
+						sPORTRAIT.sprite = _HarperPortrait;
+						break;
+					case "Roy":
+						sPORTRAIT.sprite = _RoyPortrait;
+						break;
+					case "Sunny":
+						sPORTRAIT.sprite = _SunnyPortrait;
+						break;
+					case "MD":
+						sPORTRAIT.sprite = _MDPortrait;
+						break;
+					default:
+						sPORTRAIT.sprite = _nullPortrait;
+						break;
+				}
+			}
+		} else {
+			sPORTRAIT.sprite = _nullPortrait;
+		}
+	}
+	
 	bool Read(string line){
 		diaText.text = "";
 		StartCoroutine(TypeWriter(line));
@@ -90,7 +130,7 @@ public class InkReader : MonoBehaviour
 		return true; 
 	}
 	
-	void SetTimerTime(){
+	public void SetTimerTime(){
 		//Setting the timer based on ink file!
 		string _lastChoice = story.currentChoices[maxChoice].text;
 		if (_lastChoice.Contains("<")){

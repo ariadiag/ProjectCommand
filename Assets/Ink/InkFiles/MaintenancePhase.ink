@@ -1,5 +1,5 @@
 INCLUDE MidPhase
-//INCLUDE GoPhase
+INCLUDE GoPhase
 INCLUDE FakeCalls
 
 
@@ -13,7 +13,7 @@ INCLUDE FakeCalls
 
 //VARIABLES AND FUNCTIONS
 VAR r_trust = 10 //Roy's trust in you
-VAR a_trust = 12 //Aaron's trust
+VAR a_trust = 13 //Aaron's trust
 VAR h_trust = 8 //Harper's trust
 VAR s_trust = 10 //Sunny's trust
 

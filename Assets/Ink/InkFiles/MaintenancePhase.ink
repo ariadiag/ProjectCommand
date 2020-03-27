@@ -112,7 +112,6 @@ Answer Call #Roy
     ~a_trust = a_trust + 1
         Oh, thank you. Uh, well, I'll wait here... #Aaron
     *[...]
-    
 //POP UP TUT. PLAYER SEARCHES ENGINE ROOM LOG. 
 -->DONE
 
@@ -373,7 +372,7 @@ You're back, get the codes? #Harper
     *[My colleague's PC crashed.]
     *[Nope, her computer crashed.]
     *[...]
-        Talk to me dammit! My patience is wearing thin.
+        Talk to me dammit! My patience is wearing thin. #Harper
         ->opts
 
 -(choice)Hm. Okay, I can help. Give me station's routing number and firewall code. #Harper

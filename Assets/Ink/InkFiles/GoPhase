@@ -1,0 +1,566 @@
+===GoPhaseEvent1===
+
+- O-okay! Right. We need to prepare the escape shuttles first! #Aaron
+    *[Okay, I need you to go check on them now.]
+        R-right! #Aaron
+    *[Send Harper, I'll switch calls to them now.]
+        I’ll call them now! #Aaron
+    *[Send Sunny, I will call her now.]
+        I’ll call her now! #Aaron
+    *[...]
+        Hello? I’m….just gonna go there now! #Aaron
+        ~a_trust = a_trust - 1
+- Understood. The escape shuttles need to be prepared. #Harper
+    *[Okay, I need you to go check on them now.]
+        On it. #Harper
+    *[Send Aaron, I'll switch calls to him now.]
+        I’ll call him now. #Harper
+    *[Send Sunny, I will call her now.]
+        I’ll call her now. #Harper
+    *[...]
+        I’m going to go there now if you won’t talk. #Harper
+        ~h_trust = h_trust - 1
+- That’s a g-good idea! Though...um….we need to prepare the escape s-shuttles.. #Sunny
+    *[Okay, I need you to go check on them now.]
+        Um…o-okay! #Sunny
+    *[Send Harper, I'll switch calls to them now.]
+        I’ll call them now! #Sunny
+    *[Send Aaron, I will call him now.]
+        I’ll c-call him now! #Sunny
+    *[...]
+        H-hello!? I’ll go there c-cause you didn’t s-say anything! #Sunny
+        ~s_trust = s_trust - 1
+-->DONE
+
+//This is the person who is dealing with the shuttles:
+- Hey, I just got here…...let me go check Shuttle 1-A………………....……….we’ve got a slight problem……...look’s like the Shuttle Bay doors won’t open because of the ship’s instability. We're gonna need to stabilize the reactor to buy us time to get those doors open… #Aaron
+    *[Okay, let’s get to it, head there now.]
+        ~a_trust = a_trust + 1
+    *[Alright, send Harper.]
+    *[Alright, send Sunny.]
+    *[...]
+- Hey, just got here…..checking Shuttle 1-A……………....……….we’ve got a problem……...the Shuttle Bay doors won’t open because of the ship’s instability. We need to stabilize the reactor to buy time to keep those escape doors open… #Harper
+    *[Okay, let’s get to it, head there now.]
+        ~h_trust = h_trust + 1
+    *[Alright, send Aaron.]
+    *[Alright, send Sunny.]
+    *[...]
+- H-hey...um…..I just got here…...let me go check Shuttle 1-A……....……….um…….o-okay…..we’ve got a slight problem……...it look’s like the Shuttle Bay doors won’t open because of the s-ship’s instability. We're gonna need to stabilize the reactor to buy us t-time to get those doors open…...… #Sunny
+    *[Okay, let’s get to it, head there now.]
+        ~s_trust = s_trust + 1
+    *[Alright, send Harper.]
+    *[Alright, send Aaron.]
+    *[...]
+-->DONE
+
+//Now you need to go into the Procedures folder, find the Stability Levels folder. Then find Reactors, then Shuttle Reactors, then the Albatross folder. Then you’ll need to ask which Reactor the ship has.
+- Hey, have you found anything? #Aaron
+    *[Which reactor is Redliner running?]
+    *[What reactor is the Redliner using?]
+    *[Tell me which reactor Redliner is working.]
+    *[...]
+        My book...um, it says you need the Reactor info. #Aaron
+        ~a_trust = a_trust - 1
+- Got anything yet? #Harper
+    *[Which reactor is Redliner running?]
+    *[What reactor is the Redliner using?]
+    *[Tell me which reactor Redliner is working.]
+    *[...]
+        Let me do this job for you. #Harper
+        ~h_trust = h_trust - 1
+- Um, did y-you get anything info yet? #Sunny
+    *[Which reactor is Redliner running?]
+    *[What reactor is the Redliner using?]
+    *[Tell me which reactor Redliner is working.]
+    *[...]
+        D-do you need my reactor info? #Sunny
+        ~s_trust = s_trust - 1
+    
+- That’s a question for Harper I’m sure….but let me look in my little book……………….lets see………………………………………..its a M-34Z1 Reactor. #Aaron
+    *[Thank you.]
+        ~a_trust = a_trust + 1
+    *[Got it, thanks.]
+    *[Got it.]
+    *[...]
+- We’ve got an M-34Z1 Reactor, I worked on its update a few weeks ago. #Harper
+    *[Thank you.]
+        ~h_trust = h_trust + 1
+    *[Got it, thanks.]
+    *[Got it.]
+    *[...]
+- Oh….l-let me see…...um……………..its a…...M-34Z1 Reactor…….I think Harper was updating it l-last week! #Sunny
+    *[Thank you.]
+        ~s_trust = s_trust + 1
+    *[Got it, thanks.]
+    *[Got it.]
+    *[...]
+-->DONE
+
+//Now open the right reactor folder and read the step list:
+    //Step 1: Put the reactor in standby mode.
+    //Step 2: Assess reactor damage/current situation.
+    //Step 3: Check particle accelerator’s output function.
+    //Step 4: Check reactor pressurization.
+        //How to Fix: Reapply key code to default pressurization settings
+- Now what? #Aaron
+    *[Put the reactor in standby so we can look into its damage.]
+        ~a_trust = a_trust + 1
+    *[Get the reactor in standby, we need to assess its state.]
+    *[I need the reactor on standby now.]
+    *[...]
+        Look, you have to help, I think it goes on standby? #Aaron
+        ~a_trust = a_trust - 1
+- I assume you need the reactor in standby? #Harper
+    *[Put the reactor in standby so we can look into its damage.]
+        ~h_trust = h_trust + 1
+    *[Get the reactor in standby, we need to assess its state.]
+    *[I need the reactor on standby now.]
+    *[...]
+        Fucking talk to me. #Harper
+        ~h_trust = h_trust - 1
+- W-what next? #Sunny
+    *[Put the reactor in standby so we can look into its damage.]
+        ~s_trust = s_trust + 1
+    *[Get the reactor in standby, we need to assess its state.]
+    *[I need the reactor on standby now.]
+    *[...]
+        Should I p-put it on standby? #Sunny
+        ~s_trust = s_trust - 1
+        
+- Right, okay. Give me just a minute. While I’m doing it, what’s next? #Aaron
+    *[You need to look into the reactor to see if you can see any damage.]
+        Alright! #Aaron
+        ~a_trust = a_trust + 1
+    *[Look for any damage or misalignments.]
+        Okay. #Aaron
+    *[Find any damage, do it quickly.]
+        Okay. #Aaron
+    *[...]
+        Hello? #Aaron
+        ~a_trust = a_trust - 1
+- Already did. I’ll look to see if the reactor has any damage. #Harper
+    *[Thank you.]
+        ~h_trust = h_trust + 1
+    *[Perfect.]
+        ~h_trust = h_trust + 1
+    *[Okay.]
+    *[...]
+- O-okay! I think I r-remember Harper talking about this last w-week! #Sunny
+    *[You need to look into the reactor to see if you can see any damage.]
+        O-okay! #Sunny
+        ~s_trust = s_trust + 1
+    *[Look for any damage or misalignments.]
+        O-okay! #Sunny
+    *[Find any damage, do it quickly.]
+        Um o-okay! #Sunny
+    *[...]
+        H-hello? #Sunny
+        ~s_trust = s_trust - 1
+    
+- Um…..it doesn’t look like there’s anything wrong……..I can’t see any problems from here… #Aaron
+    *[Okay, next look for the particle accelerator panel, tell me it’s last output rate.]
+        Sure, I will. #Aaron
+        ~a_trust = a_trust + 1
+    *[Alright, next I need the particle accelerator panel’s output rate.]
+        Okay. #Aaron
+    *[Give me the particle accelerator panel’s output rate.]
+        Okay, I will. #Aaron
+    *[...]
+        Please give me direction.. #Aaron
+        ~a_trust = a_trust - 1
+- There’s nothing wrong inside. Let me guess, your checklist wants the particle accelerator panel’s output rate? #Harper
+    *[You know your stuff.]
+        I do. #Harper
+        ~h_trust = h_trust + 1
+    *[Correct.]
+    *[Yes.]
+    *[...]
+        Are you paying attention? #Harper
+        ~h_trust = h_trust - 1
+- Well……...um...it d-doesn’t look like there’s anything wrong………..what else do you need? #Sunny
+    *[Okay, next look for the particle accelerator panel, tell me it’s last output rate.]
+        O-okay, I will! #Sunny
+        ~s_trust = s_trust + 1
+    *[Alright, next I need the particle accelerator panel’s output rate.]
+        I can d-do that! #Sunny
+    *[Give me the particle accelerator panel’s output rate.]
+        Oh, o-okay. #Sunny
+    *[...]
+        P-please give me direction….. #Sunny
+        ~s_trust = s_trust - 1
+        
+- Let me see……….the reading shows 1041.01 PPS……...I think that’s low, Harper always talks about this reactor’s level exceeding 4000.00 when we're cruising.. #Aaron
+    *[Okay, let’s try a frame update.]
+    *[Push a frame update.]
+    *[Update the system’s frame now.]
+    *[...]
+- It’s low, dangerously low. It's 1041.01 PPS, I need it to be 4000.00 for a stable exit. I’m going to try and update its frame now. I’ll let you know how it goes. #Harper
+    *[Thank you.]
+    *[I'll standby.]
+    *[Understood.]
+    *[...]
+- Its r-reading 1041.01 PPS……………………...that’s r-really low! This isn’t g-good, oh g-god………………………….We need to f-fix this r-right now! #Sunny
+    *[Okay, let’s try a frame update.]
+    *[Push a frame update.]
+    *[Update the system’s frame now.]
+    *[...]
+    
+- So…..um…...I’ll be honest with you……..I know how to implement an update, I’m just not sure which update I need to implement…... #Aaron
+    *[Let me get that for you.]
+        ~a_trust = a_trust + 1
+    *[I can help with that.]
+        ~a_trust = a_trust + 1
+    *[That’s my job.]
+    *[...]
+- So the update is moving forward, I just need one thing from your end. Find me the System Frame Update Code (SFUC). #Harper
+    *[Let me get that for you.]
+        ~h_trust = h_trust + 1
+    *[I can help with that.]
+        ~h_trust = h_trust + 1
+    *[On it.]
+    *[...]
+- S-so I d-do know how to do that…...um…..but….I dont know the c-code needed for the update… #Sunny
+    *[Let me get that for you.]
+        ~s_trust = s_trust + 1
+    *[I can help with that.]
+        ~s_trust = s_trust + 1
+    *[That’s my job.]
+    *[...]    
+-->DONE
+
+//Now find the System Frame Update Code (SFUC) inside the Shuttle Reactors Folder, then the Albatross folder. Find the Frame Update Folder. It will display a paragraph on how to update the system’s frames alongside the (SFUC).
+// If Wrong Answer: The system will lockout and require the player play the decrypt mini-game from their location, there is no death or damage here. It serves as a time waste.
+- Um..the system just locked on me….I hope that was the right code……Here i'll use our established link, try and break through it.. #Aaron
+- Shit. You gave me the wrong code. It's locked. Use the established link we have, break through this lockout. #Harper
+- Um….the system is l-locking me out……d-do you think you could break through this lock? You c-could use the established link we have.... #Sunny
+-->DONE
+
+//If Correct Answer: Continue as normal.
+- Okay, it’s starting to update! Should I close it up? #Aaron
+    *[No, one last step. Check the reactor’s pressurization after the update finishes.]
+        I’ll let you know what it says. #Aaron
+        ~a_trust = a_trust + 1
+    *[One last task, check the reactor’s pressurization.]
+        I’ll let you know what it says. #Aaron
+        ~a_trust = a_trust + 1
+    *[Don’t do that. One final task, check the reactor’s pressurization.]
+        Okay, I’ll let you know what it says. #Aaron
+    *[...]
+        W-what do I do? I’m going to try an update…. #Aaron
+        ~a_trust = a_trust - 1
+- Good. It’s updating. Next we’ll finish with the reactor’s pressurization. #Harper
+    *[Thank you, Harper.]
+    *[Let me know!]
+    *[Understood.]
+    *[...]
+- O-okay! It’s working! A-are we done with it? #Sunny
+    *[No, one last step. Check the reactor’s pressurization after the update finishes.]
+        O-okay! #Sunny
+        ~s_trust = s_trust + 1
+    *[One last task, check the reactor’s pressurization.]
+        S-sure! #Sunny
+        ~s_trust = s_trust + 1
+    *[Don’t do that. One final task, check the reactor’s pressurization.]
+        Oh, a-alright. #Sunny
+    *[...]
+        Um w-what do I do? I’m going to try an update…. #Sunny
+        ~s_trust = s_trust - 1
+    
+- So, the update is finishing right now……………………………….……...give me a moment…………………...okay! Let’s see here…….the pressurization is blinking; I don’t need Harper to tell me that’s bad! #Aaron
+    *[Okay, we need to default the pressurization.]
+    *[Let's reset the reactor pressurization.]
+    *[Listen, we're going to fix the pressurization.]
+    *[...]
+- Alright. Update is finished. Let me check on it’s pressurization……...shit….it’s tanking. Well this explains the instability. We need to reset the pressure, should buy us enough time to jump ship. #Harper
+    *[Okay, let's do it.]
+    *[I'm right behind you.]
+    *[On it.]
+    *[...]
+- U-um so the update is finishing! Let’s see……………………………...c-come you stupid machine! D-done! Let’s check this pressure………………...O-oh god………….it’s r-really low! We need to fix this r-right n-now! #Sunny
+    *[Okay, we need to default the pressurization.]
+    *[Let's reset the reactor pressurization.]
+    *[Listen, we're going to fix the pressurization.]
+    *[...]
+-->DONE
+
+//Now go into the Shuttle Reactors Folder, then the Albatross folder. Find the Pressurization Default. It will display a paragraph on how to reset it. You will need to find the reset code inside that paragraph.
+// If Wrong Answer: Answering wrong will cause the ship to jerk violently, damaging whoever is in the reactor room, they will slam into a wall as the ship is thrown, killing them. 
+// A living member of the ship will THEN call you.
+- Hey! W-we just got thrown again, I---I heard a scream...I’m going to go check it out… #Aaron
+    *[Please go make sure they're okay..]
+        They’re….d-dead….. #Aaron
+        ~a_trust = a_trust - 3
+    *[Let me know what you find..]
+        They’re….d-dead….. #Aaron
+        ~a_trust = a_trust - 3
+    *[Okay.]
+        They’re….d-dead….. #Aaron
+        ~a_trust = a_trust - 3
+    *[...]
+        They’re….d-dead….. #Aaron
+        ~a_trust = a_trust - 3
+- The ship just threw itself again. There was a loud scream, I’ll investigate. #Harper
+    *[Please go make sure they're okay..]
+        They’re.d-dead….jesus christ…. #Harper
+        ~h_trust = h_trust - 3
+    *[Let me know what you find..]
+        They’re dead….jesus christ…. #Harper
+        ~h_trust = h_trust - 3
+    *[Okay.]
+        They’re dead….jesus christ…. #Harper
+        ~h_trust = h_trust - 3
+    *[...]
+        They’re dead….jesus christ…. #Harper
+        ~h_trust = h_trust - 3
+- H-hey…….W-we just got thrown again, I---I heard a scream...I’m going to go check it out… #Sunny
+    *[Please go make sure they're okay..]
+        They’re….d-dead….. #Sunny
+        ~s_trust = s_trust - 3
+    *[Let me know what you find..]
+        They’re….d-dead….. #Sunny
+        ~s_trust = s_trust - 3
+    *[Okay.]
+        They’re….d-dead….. #Sunny
+        ~s_trust = s_trust - 3
+    *[...]
+        They’re….d-dead….. #Sunny
+        ~s_trust = s_trust - 3
+-->DONE
+
+//Without Death
+- Alright let’s see here……..pressure is rising……………..steady so far………….looks good to me, I’ll sit tight for a while, make sure it's steady. #Aaron
+    *[Thank you Aaron.]
+        ~a_trust = a_trust + 1
+    *[Alright, let me know.]
+        ~a_trust = a_trust + 1
+    *[Okay, understood.]
+    *[...]
+- Pressure is rising steadily, I will wait here for a few minutes to make sure it  levels out. #Harper
+    *[Thank you Harper.]
+        ~h_trust = h_trust + 1
+    *[Alright, let me know.]
+        ~h_trust = h_trust + 1
+    *[Okay, understood.]
+    *[...]
+- O-okay the pressure is rising! I’ll w-wait here to make sure it levels out okay! #Sunny
+    *[Thank you Sunny.]
+        ~s_trust = s_trust + 1
+    *[Alright, let me know.]
+        ~s_trust = s_trust + 1
+    *[Okay, understood.]
+    *[...]
+-->DONE
+    
+===GoPhaseEvent2===
+// After a few seconds your screens will become littered with ads, they will keep swarming your pc until the power shuts off one last time, overhead you’ll hear (*Do me a favor, lose. Do me a favor, lose. Do me a favor, lose.*) As you turn it on and come back to your pc you’ll have to play the decrypting mini-game to enter it.
+// A call will be waiting for you as you turn your PC on:
+- Hey! So good news, we’ve got enough stability to open the shuttle doors. Only problem is that we need to prep them for departure. #Aaron
+    *[Alright let's finish this, head there right now.]
+        ~a_trust = a_trust + 1
+    *[Let's end this mess, send Harper.]
+        I will! #Aaron
+        ~a_trust = a_trust + 1
+    *[Tell Sunny to get there, we need to finish this.]
+        I will! #Aaron
+        ~a_trust = a_trust + 1
+    *[...]
+        I guess I’ll go? #Aaron
+        ~a_trust = a_trust - 1
+- We’ve got enough stability to open the shuttle doors. Problem is that we need to prepare them for departure. #Harper
+    *[Alright let's finish this, head there right now.]
+        ~h_trust = h_trust + 1
+    *[Let's end this mess, send Aaron.]
+        Roger. #Harper
+        ~h_trust = h_trust + 1
+    *[Tell Sunny to get there, we need to finish this.]
+        Understood. #Harper
+        ~h_trust = h_trust + 1
+    *[...]
+        Look. I’m going myself. #Harper
+        ~h_trust = h_trust - 1
+- H-hey! So the news is, we’ve got enough stability to o-open the shuttle doors. But um, the problem is that we need to prep them for d-departure... #Sunny
+    *[Alright let's finish this, head there right now.]
+        ~s_trust = s_trust + 1
+    *[Let's end this mess, send Harper.]
+        O-okay! #Sunny
+        ~s_trust = s_trust + 1
+    *[Tell Aaron to get there, we need to finish this.]
+        R-right! #Sunny
+        ~s_trust = s_trust + 1
+    *[...]
+        I-I’ll go myself.. #Sunny
+        ~s_trust = s_trust - 1
+
+- Alright, I’m inside the shuttle bay, let me start up our escape shuttle……...so it looks like we're gonna need two things to get out of here….a launch code to direct the ship somewhere and to divert some of our current shields to the escape shuttle. If we snag a rock it’ll blow to bits. #Aaron
+    *[Let’s start with the launch codes, what do you need?]
+        ~a_trust = a_trust + 1
+    *[What do you need for the launch codes?]
+    *[Tell me what you need for the launch codes.]
+    *[...]
+        H-hello? #Aaron
+        ~a_trust = a_trust - 1
+- Alright, I’m inside the shuttle bay, let me start up our escape shuttle. We're going to need two things; a launch code to direct the ship and to divert some of our current shields to the escape shuttle. #Harper
+    *[Let’s start with the launch codes, what do you need?]
+        ~h_trust = h_trust + 1
+    *[What do you need for the launch codes?]
+    *[Tell me what you need for the launch codes.]
+    *[...]
+        Stay in open comms damnit. #Harper
+        ~h_trust = h_trust - 1
+- O-okay, I’m inside the shuttle bay, let me start up our escape shuttle……...it s-says we're gonna need two things….a launch code to direct the ship somewhere and to d-divert some of our current shields to the escape shuttle…. #Sunny
+    *[Let’s start with the launch codes, what do you need?]
+        ~s_trust = s_trust + 1
+    *[What do you need for the launch codes?]
+    *[Tell me what you need for the launch codes.]
+    *[...]
+        A-are you there still!? #Sunny
+        ~s_trust = s_trust - 1
+
+- So I’ll need launch coordinates to a location we would send the escape shuttle too. So find us a location that's safe nearby, then pass me the code. #Aaron
+    *[Alright, give me a minute.]
+        ~a_trust = a_trust + 1
+    *[I can do that.]
+    *[On it.]
+    *[...]
+- I need launch coordinates to a safe location. Give me them when you find them, I will wait. #Harper
+    *[Alright, give me a minute.]
+        ~h_trust = h_trust + 1
+    *[I can do that.]
+    *[On it.]
+    *[...]
+- S-so um I need coordinates for the escape s-shuttle. It’ll direct it somewhere, so I need a spot to s-send us! #Sunny
+    *[Alright, give me a minute.]
+        ~s_trust = s_trust + 1
+    *[I can do that.]
+    *[On it.]
+    *[...]
+-->DONE
+
+//Go onto the right screen and find the (Ship Link) Transponder Map, this will be established from an earlier link and have a display of nearby areas you can choose to send the crew (alternate endings).
+- Alright! Let me put those in…………..next we’re going to need to divert the shield……….which might require another person. #Aaron
+    *[Alright, I’ll call Harper.]
+        Okay! #Aaron
+    *[Okay, I’ll call Sunny.]
+        Okay! #Aaron
+    *[No, go yourself.]
+        Okay. #Aaron
+    *[...]
+        I’ll just go myself… #Aaron
+        ~a_trust = a_trust - 1
+- Good. The launch codes are in, now for the final bit. The shield. It might be a two person job. #Harper
+    *[Alright, I’ll call Aaron.]
+        Understood. #Harper
+    *[Okay, I’ll call Sunny.]
+        Understood. #Harper
+    *[No, go yourself.]
+        Understood. #Harper
+    *[...]
+        I'll go myself. #Harper
+        ~h_trust = h_trust - 1
+- O-okay! I’m p-putting the codes in now! So um….for the shields I know it works better with two people…. #Sunny
+    *[Alright, I’ll call Harper.]
+        O-okay! #Sunny
+    *[Okay, I’ll call Aaron.]
+        O-okay! #Sunny
+    *[No, go yourself.]
+        S-sure! #Sunny
+    *[...]
+        I’ll just g-go myself… #Sunny
+-->DONE
+
+// This is assuming you sent another person to the shields.
+- Hey! So I just got to Shielding Maintenance. What do we need to do? #Aaron
+    *[Good, let me get that info.]
+        ~a_trust = a_trust + 1
+    *[Alright, I’ll figure that out.]
+        ~a_trust = a_trust + 1
+    *[Fine, I’ll get it.]
+        ~a_trust = a_trust + 1
+    *[...]
+- Hello. Just got to Shielding Maintenance, what is the plan? #Harper
+    *[Good, let me get that info.]
+        ~h_trust = h_trust + 1
+    *[Alright, I’ll figure that out.]
+        ~h_trust = h_trust + 1
+    *[Fine, I’ll get it.]
+        ~h_trust = h_trust + 1
+    *[...]
+- H-hey! I just got to Shielding Maintenance, I k-know what we need to do, get me the Escape Shuttle Shielding Transponder ID! #Sunny
+    *[Good, let me get that info.]
+        ~s_trust = s_trust + 1
+    *[Alright, I’ll figure that out.]
+        ~s_trust = s_trust + 1
+    *[Fine, I’ll get it.]
+        ~s_trust = s_trust + 1
+    *[...]
+-->DONE   
+    
+// This info can be gathered in two different ways. One through calling the person back who is at the Escape Shuttle or by looking it up on your computer.	
+    // Looking it up: To look it up, go into Emergency Escape Operations, then find Albatross, then look for the Escape Shuttle Information. There will be a collection of info about the Escape Shuttle’s specs. On that list will be the Escape Shuttle Shielding Transponder ID: (53m-cba)
+    // Calling person you sent to Escape Shuttle:
+        // Could you give me the Escape Shuttle Shielding Transponder ID?
+        // I need the Escape Shuttle Shielding Transponder ID.
+        // Can you give me the Escape Shuttle Shielding Transponder ID?
+        // ...
+            - Of course. Let me open up the spec panel…….one second…………………...here it is, its 53m-cba. #Aaron
+            - Roger. I’m opening the spec panel now…….it’s 53m-cba. #Harper
+            - Oh! S-sure, let me get the spec panel up……………..so...its 53m-cba! #Sunny
+-->DONE 
+
+// When you have the right info you have to call the person back.
+// If Wrong Answer: Getting the answer wrong here will lock the shielding system, requiring the player to try and win the decrypting mini-game. Losing three times will cause the shielding to malfunction, making it inoperable (they won't be able to use it).
+- Hmm….nothing happened…………………………...wait……………...something’s erroring out! The wrong code must’ve glitched the failing s-system! #Aaron
+- Let’s see…..nothing so far………….nop-wait………...the shields are falling…...the wrong code must’ve glitched the failing system. #Harper
+- O-okay! Let me try……...okay…………...w-wait……….the shields are dropping! The wrong c-code must’ve glitched the fragile s-system! #Sunny
+-->DONE
+
+//Now it’s either a normal or raced finish. If the player got the last question wrong, the timer which has been counting down since the beginning will immediately flip to one minute regardless or its past time. The ship will begin its final arc of falling apart.
+    //If the player answered correctly, the timer will shoot to 3 minutes.
+- Okay. I’m heading back to the escape shuttle. #Aaron
+    *[Let me know Aaron.]
+    *[Okay.]
+    *[Right.]
+    *[...]
+- I’m heading to the escape shuttle. #Harper
+    *[Let me know Harper.]
+    *[Okay.]
+    *[Right.]
+    *[...]
+- O-kay! I’m h-heading back to the escape shuttle. #Sunny
+    *[Let me know Sunny.]
+    *[Okay.]
+    *[Right.]
+    *[...]
+
+- I've made it! #Aaron
+    *[I'm glad Aaron, get off that Shuttle.]
+    *[Good, get to safety.]
+    *[Leave!]
+    *[...]
+- I'm here, I've made it. #Harper
+    *[I'm glad Aaron, get off that Shuttle.]
+    *[Good, get to safety.]
+    *[Leave!]
+    *[...]
+- H-hey! Looks like I've made it... #Sunny
+    *[I'm glad Aaron, get off that Shuttle.]
+    *[Good, get to safety.]
+    *[Leave!]
+    *[...]
+
+- T-thank you again. For everything. You saved our lives...I won't forget you… #Aaron
+    *[Neither will I, Aaron, get to safety now.]
+    *[Nor will I; go get to safety Aaron.]
+    *[Get off that ship.]
+    *[...]
+- Thank you. You saved our lives. I won't forget it. Goodbye, friend. #Harper
+    *[Neither will I, Harper, get to safety now.]
+    *[Nor will I; go get to safety Harper.]
+    *[Get off that ship.]
+    *[...]
+- Um...t-thank you! F-for everything! You saved our lives! I won't f-forget you..… #Sunny
+    *[Neither will I, Sunny, get to safety now.]
+    *[Nor will I; go get to safety Sunny.]
+    *[Get off that ship.]
+    *[...]
+-->DONE

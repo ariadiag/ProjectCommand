@@ -46,8 +46,18 @@ public class InkReader : MonoBehaviour
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
     }
 	
-	//ALLOW KEYBOARD SELECTION! (fix later?)
+	//GETTERS & SETTERS
+	public Story GetStory(){
+		return this.story;
+	} public bool SetStory(TextAsset inkJSONAsset){
+		this.story = new Story(inkJSONAsset.text);
+		return true;
+	} public void PlayKnot(string knotname){
+		story.ChoosePathString(knotname);
+	}
+	
 	void Update(){
+		//ENABLE KEYBOARD SELECTION
 		if (inChoiceTime){
 			if(Input.GetKeyDown("1") && story.currentChoices.Count > 1){
 				story.ChooseChoiceIndex(0);
@@ -66,6 +76,11 @@ public class InkReader : MonoBehaviour
 			if(Input.GetKeyDown("space")){
 				Talk();
 			}
+		}
+		//CHECK FOR STORY END
+		if (storyOver){
+			diaBox.interactable = false;
+			ClearTimer();
 		}
 	}
 	

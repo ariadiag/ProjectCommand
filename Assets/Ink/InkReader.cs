@@ -46,16 +46,6 @@ public class InkReader : MonoBehaviour
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
     }
 	
-	//GETTERS & SETTERS
-	public Story GetStory(){
-		return this.story;
-	} public bool SetStory(TextAsset inkJSONAsset){
-		this.story = new Story(inkJSONAsset.text);
-		return true;
-	} public void PlayKnot(string knotname){
-		story.ChoosePathString(knotname);
-	}
-	
 	void Update(){
 		//ENABLE KEYBOARD SELECTION
 		if (inChoiceTime){
@@ -107,9 +97,29 @@ public class InkReader : MonoBehaviour
 		StartCoroutine(Countdown(set_time));
 	}
 	
+	//GETTERS & SETTERS
+	public Story GetStory(){
+		return this.story;
+	} public bool SetStory(TextAsset inkJSONAsset){
+		this.story = new Story(inkJSONAsset.text);
+		return true;
+	} public void PlayKnot(string knotname){
+		story.ChoosePathString(knotname);
+	}
+	
+	//Public Start Calls
+	public void InitiateCall(){
+		//Ring (add sound & visual effects)
+		Read("Incoming Call");
+	} public void InitiateCall(TextAsset inkJSONAsset, string knotname){
+		SetStory(inkJSONAsset);
+		PlayKnot(knotname);
+		InitiateCall();
+	}
+		
 	void FindSpeaker(){
 		if (s_tags.Count != 0){
-			if (s_tags[0] != currentSpeaker){
+			if (s_tags[0] != currentSpeaker && s_tags[0] != ""){
 				currentSpeaker = s_tags[0];
 				
 				switch (currentSpeaker){

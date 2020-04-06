@@ -7,7 +7,6 @@ public class TaskManager : MonoBehaviour
 {
     public GameObject taskPrefab;
 	
-	
 	public void NewTask(string desc){
 		
 	}

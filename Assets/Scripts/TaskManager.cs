@@ -5,9 +5,18 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    public GameObject taskPrefab;
+    public Task taskPrefab;
+	public List<Task> taskList;
 	
-	public void NewTask(string desc){
-		
+	void Start(){
+		taskList = new List<Task>();
 	}
+	public void NewTask(string desc){
+		Task newtask = (Task)Instantiate(taskPrefab);
+		newtask.transform.SetParent (this.transform, false);
+		newtask.SetDesc(desc);
+		taskList.Add(newtask);
+	}
+	
+	
 }

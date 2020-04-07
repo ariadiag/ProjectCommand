@@ -5,17 +5,25 @@ using TMPro;
 
 public class Task :MonoBehaviour
 {
-    public TextMeshProUGUI text;
-	private Animator anim;
+	public TextMeshProUGUI description;
+	public Animator anim;
 	
 	void Start(){
-		anim = GetComponent<Animator>();
+		this.description.text = "";
 	}
 	
 	void OnEnable(){
-		//anim.Play("TaskReveal", 0, 0);
-	} void OnDisable(){
-		//anim.Play("TaskHide", 0,0);
+		anim.Play("TaskReveal", 0, 0);
+	}
+	public void EndTask(){
+		anim.Play("TaskHide", 0,0);
+		Destroy(this);
+	}
+	
+	public void SetDesc(string d){
+		this.description.text = d;
+	} public string ReadDesc(){
+		return description.text;
 	}
 	
 }

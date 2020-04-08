@@ -44,6 +44,7 @@ public class InkReader : MonoBehaviour
         story = new Story(inkJSONAsset.text);
 		storyOver = false;
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
+		diaBox.interactable = false;
     }
 	
 	void Update(){
@@ -111,6 +112,10 @@ public class InkReader : MonoBehaviour
 	public void InitiateCall(){
 		//Ring (add sound & visual effects)
 		Read("Incoming Call");
+		diaBox.interactable = true;
+	} public void InitiateCall(TextAsset inkJSONAsset){
+		SetStory(inkJSONAsset);
+		InitiateCall();
 	} public void InitiateCall(TextAsset inkJSONAsset, string knotname){
 		SetStory(inkJSONAsset);
 		PlayKnot(knotname);

@@ -21,7 +21,7 @@ VAR s_trust = 10 //Sunny's trust
 TODO: DEBUG MODE
 VAR DEBUG = true
 {DEBUG:
-        ->PhaseEvent2
+        ->PhaseEvent4.PE4B
     -else:
         Do nothing...
 }
@@ -148,27 +148,29 @@ Answer Call #Roy
 -Hi, call me Harper. Got another problem for you. #Harper
 Annoying-ass feedback is coming over the intercom system. #Harper
 Estrada sent Bedford into the Communications Room. We need help, can you do it? #Harper
-    *[Of course, Harper.]
-    *[That's why I'm here.]
-    *[What am I going to do, leave?]
+    **[Of course, Harper.]
+    **[That's why I'm here.]
+    **[What am I going to do, leave?]
     ~h_trust = h_trust-1
         Try that again, I dare you. #Harper
         I just needed to know you could hear me so <>
-    *[...]
+    **[...]
     ~h_trust = h_trust-1
         You there? #Harper
         Listen up, <> #Harper
     
 -<>I know we're in range. #Harper
 Check our map file and tell me which intercom box is broadcasting. #Harper
-    *[Alright, let me check.]
-    *[...]
+    **[Alright, let me check.]
+    **[...]
         Hey, can you hear me? #Harper
         Are you there? #Harper
         Fuck it. #Harper
         ->DONE
         TODO: Fix the above silent option
-
+        
+*[...]
+    ->PhaseEvent3
 //PLAYER FINDS SHIP INFORMATION; THEN FAKE CALL; THEN POWER GOES OUT
 -->DONE
 
@@ -213,6 +215,7 @@ Hello TPS, this is Medical Dispatch. #MD
         *[ARA3-04931]
             Perfect, I see them. We're on our way! #MD
             Just tell them to sit tight, and we'll contact you once we reach them. Good Day. #MD
+            ->PhaseEvent4
         *[AR-05302]
             I don't see anything... #MD
             Give it to me one more time; we're going to need the right code. #MD
@@ -225,7 +228,7 @@ Hello TPS, this is Medical Dispatch. #MD
             I don't see anything... #MD
             Give it to me one more time; we're going to need the right code. #MD
             ->opts
-        *[...]
+        *[<10>...]
             Hello? I can't hear you. Please give me the ship's ID signature. #MD
             ->opts
 //COUNTDOWN TIMER STARTS
@@ -236,6 +239,8 @@ Hello TPS, this is Medical Dispatch. #MD
     Oh-oh, you're back! Are they co- *static*  #Sunny
     Error in transmission #fake
 //SITE GLITCHES OUT; PLAYER HAS TO CLOSE POP UPS AND TURN LIGHTS ON
+*[...]
+    ->PhaseEvent4
 -->DONE
 
 =PE4A
@@ -272,6 +277,10 @@ Hello TPS, this is Medical Dispatch. #MD
             ~h_trust = h_trust - 1
             Hey! This isn't the time to be slacking! #Harper
             Just... Check whatever files you have and get back to me. #Harper
+-<i>On Hold.</i>
+
+*[...]
+    ->PE4A
 -->DONE
     
 =PE4B
@@ -292,7 +301,7 @@ Hello TPS, this is Medical Dispatch. #MD
         Just do your job. #Harper
     *[Thanks, Harper.]
     *[...]
-    
+-<i>On Hold.</i>
 -->DONE
 
 =PE4C
@@ -300,7 +309,7 @@ Alright, so I need to input something? #Harper
     *[Yeah: Beta, Omicron, Alpha, Epsilon]
     *[Alpha, Beta, Epsilon, Omicron]
     *[E, A, O, B]
-        E, A, O, V? B?
+        E, A, O, V? B? #Harper
     *[...]
     
 -...Nothing's happening. Are you sure this is right? #Harper
@@ -331,8 +340,10 @@ Alright, so I need to input something? #Harper
         Is that what you said the first time? It's not working. #Harper
         ->opts
     *[Alpha, Beta, Epsilon, Omicron.]
+        Uh... Nope, that's not it either. #Harper
         ->opts
     *[Epsilon, Alpha, Omicron, Beta.]
+        Why isn't it working? Give me something else - a different one! #Harper
         ->opts
     *[Omicron, Epsilon, Beta, Alpha.]
     //Correct Ans^
@@ -363,9 +374,11 @@ I don't know... Take precaution with me. #Harper
     *[Let me get access to our Executive Office.]
     *[If you say so, I'll get into the Exec Office.]
     *[...]
+-<i>On Hold.</i>
 -->DONE
 
 =PE5A
+*[AnswerCall]
 You're back, get the codes? #Harper
     -(opts)
     *[I think we're being hacked!]
@@ -374,6 +387,8 @@ You're back, get the codes? #Harper
     *[...]
         Talk to me dammit! My patience is wearing thin. #Harper
         ->opts
+*[...]
+    ->PE5A
 
 -(choice)Hm. Okay, I can help. Give me station's routing number and firewall code. #Harper
     I'll handle the rest. #Harper

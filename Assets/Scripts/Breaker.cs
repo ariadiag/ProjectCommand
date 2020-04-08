@@ -5,19 +5,31 @@ using UnityEngine;
 public class Breaker : MonoBehaviour
 {
 	public bool lightsOn = false;
+	private bool _triggered = false;
 	
-    void OnTriggerStay(Collider col){
-		if (Input.GetKeyDown(KeyCode.E)){
-			FlipSwitch();
+	void Update(){
+		if (_triggered){
+			if (Input.GetKeyDown(KeyCode.E)){
+				FlipSwitch();
+			}
 		}
 	}
 	
 	//Light Getters & Setters
     public bool AreLightsOn(){
+		Debug.Log("Lights Are " + lightsOn.ToString());
 		return lightsOn;
 	}
 	public bool FlipSwitch(){
 		lightsOn = !lightsOn;
-		return lightsOn;
+		return AreLightsOn();
 	}
+	
+	//Unfortunate Business: Manual Trigger Detection...
+    void OnTriggerEnter(Collider col){
+		_triggered = true;
+	} void OnTriggerExit(Collider col){
+		_triggered = false;
+	}
+	
 }

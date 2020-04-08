@@ -1617,6 +1617,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 877385196}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &372980046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 710894499501511872, guid: 15cd00a8e3c62954fafac233ef008677,
+    type: 3}
+  m_PrefabInstance: {fileID: 511100219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &372980049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372980046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6daf772a572ee90418c4266b7b5f7e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readNote: 0
 --- !u!1001 &407329300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15136,6 +15155,7 @@ GameObject:
   - component: {fileID: 4246970298743459083}
   - component: {fileID: 4246970298743459124}
   - component: {fileID: 4246970298743459126}
+  - component: {fileID: 4246970298743459127}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -15155,8 +15175,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddee3a7335f1674787f7f33638d3a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 372980049}
   reader: {fileID: 4310333948713013577}
   breaker: {fileID: 2125419148}
+  tmanager: {fileID: 812992055}
+--- !u!114 &4246970298743459127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246970298743459125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65dec59a83175d4eb0870b50de4bcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUps: []
 --- !u!4 &4286382201023054664
 Transform:
   m_ObjectHideFlags: 0
@@ -15287,7 +15322,7 @@ MonoBehaviour:
   _HarperPortrait: {fileID: 21300000, guid: 90d8b318edf6c464a98abeff8ad7132b, type: 3}
   _SunnyPortrait: {fileID: 21300000, guid: 92980d87a05b1d64e9b617736d372e9e, type: 3}
   _MDPortrait: {fileID: 21300000, guid: 80f1cd8249def234ab0d638563df4574, type: 3}
-  _nullPortrait: {fileID: 21300000, guid: 9b24a7dbc19cf1944a61d51b13d28a76, type: 3}
+  _nullPortrait: {fileID: 21300000, guid: d0683e77788783d4cb79dd3fc02dbce4, type: 3}
   timer: {fileID: 4310333948990491038}
   r_speed: 0.04
 --- !u!1 &4310333948713013580
@@ -16489,7 +16524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f1686246f61374429c58d1e246f5857, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0683e77788783d4cb79dd3fc02dbce4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

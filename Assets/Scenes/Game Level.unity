@@ -3468,7 +3468,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskPrefab: {fileID: 2225269739809513214, guid: a6428d0b03ffd9d42b9469069f9ff2f1,
     type: 3}
-  taskList: []
 --- !u!114 &812992056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15191,7 +15190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65dec59a83175d4eb0870b50de4bcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUps: []
 --- !u!4 &4286382201023054664
 Transform:
   m_ObjectHideFlags: 0

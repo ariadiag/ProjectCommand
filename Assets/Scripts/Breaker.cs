@@ -17,11 +17,11 @@ public class Breaker : MonoBehaviour
 	
 	//Light Getters & Setters
     public bool AreLightsOn(){
-		Debug.Log("Lights Are " + lightsOn.ToString());
 		return lightsOn;
 	}
 	public bool FlipSwitch(){
 		lightsOn = !lightsOn;
+		Debug.Log("Lights Are Now " + lightsOn.ToString());
 		return AreLightsOn();
 	}
 	

@@ -6,16 +6,30 @@ using UnityEngine.UI;
 public class TaskManager : MonoBehaviour
 {
     public Task taskPrefab;
-	public List<Task> taskList;
+	private List<Task> taskList;
 	
 	void Start(){
 		taskList = new List<Task>();
 	}
-	public void NewTask(string desc){
+	public Task NewTask(string desc){
 		Task newtask = (Task)Instantiate(taskPrefab);
 		newtask.transform.SetParent (this.transform, false);
 		newtask.SetDesc(desc);
 		taskList.Add(newtask);
+		return newtask;
+	}
+	public bool RemoveTask(string desc){
+		Task temp = taskList.Find( x => x.ReadDesc()==desc);
+		temp.EndTask();
+		return taskList.Remove(temp);
+	}
+	public bool RemoveTask(Task t){
+		t.EndTask();
+		return taskList.Remove(t);
+	}
+	
+	public void AddArrow(Vector3 pos){
+		
 	}
 	
 	

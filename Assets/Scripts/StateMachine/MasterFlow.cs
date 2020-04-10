@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
+[System.Serializable]
 public class MasterFlow : MonoBehaviour
 {
-	
+	private State state;
+	List<TextMeshProUGUI> stories;
+	List<string> subKnots;
 	
 	public Player player;
 	public InkReader reader;
@@ -26,8 +30,12 @@ public class MasterFlow : MonoBehaviour
 		//Player Reads Note -> Arrow point to Breaker
 			//Turn Lights On
 		if (player.readNote){
-			tmanager.NewTask("Turn On the Lights");
+			Task t1 = tmanager.NewTask("Turn On the Lights");
 			//AddArrow(breaker.transform.position);
+			player.readNote = false;
+		} if (breaker.AreLightsOn()){
+			tmanager.RemoveTask("Turn On the Lights");
+			reader.InitiateCall();
 		}
 		//Read 2nd Note -> Arrow point to supervisor's desk
 			//Blinking file to open/download
@@ -68,6 +76,7 @@ public class MasterFlow : MonoBehaviour
 	//running = false;???
 	
 	//MID PHASE
+		//SetStory to MidPhase
 		
 	}
 }

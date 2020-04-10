@@ -11,13 +11,15 @@ public class Task :MonoBehaviour
 	void Start(){
 		this.description.text = "";
 	}
+	void Update(){
+		
+	}
 	
 	void OnEnable(){
 		anim.Play("TaskReveal", 0, 0);
 	}
 	public void EndTask(){
-		anim.Play("TaskHide", 0,0);
-		Destroy(this);
+		StartCoroutine(HideTask());
 	}
 	
 	public void SetDesc(string d){
@@ -26,4 +28,9 @@ public class Task :MonoBehaviour
 		return description.text;
 	}
 	
+	IEnumerator HideTask(){
+		anim.Play("TaskHide", 0,0);
+		yield return new WaitForSeconds(4);
+		Destroy(this);
+	}
 }

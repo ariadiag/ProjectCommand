@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6ace8d0fd0248af41b077f0fd0b16c74
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inkJSONAsset: {instanceID: 0}
+  - diaBox: {instanceID: 0}
+  - buttonPrefab: {fileID: 5006394798871531929, guid: ec9eab5206f3c704694c6e4365cacea1,
+      type: 3}
+  - sPORTRAIT: {instanceID: 0}
+  - _RoyPortrait: {fileID: 21300000, guid: 2f1686246f61374429c58d1e246f5857, type: 3}
+  - _AaronPortrait: {fileID: 21300000, guid: 3e05f77523fc038499d920d3e5f2794f, type: 3}
+  - _HarperPortrait: {fileID: 21300000, guid: 90d8b318edf6c464a98abeff8ad7132b, type: 3}
+  - _SunnyPortrait: {fileID: 21300000, guid: 92980d87a05b1d64e9b617736d372e9e, type: 3}
+  - _MDPortrait: {fileID: 21300000, guid: 80f1cd8249def234ab0d638563df4574, type: 3}
+  - _nullPortrait: {fileID: 21300000, guid: d0683e77788783d4cb79dd3fc02dbce4, type: 3}
+  - timer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,12 +9,8 @@ public class Task :MonoBehaviour
 	public Animator anim;
 	
 	void Start(){
-		this.description.text = "";
+		this.description = GetComponentInChildren<TextMeshProUGUI>();
 	}
-	void Update(){
-		
-	}
-	
 	void OnEnable(){
 		anim.Play("TaskReveal", 0, 0);
 	}
@@ -25,12 +21,12 @@ public class Task :MonoBehaviour
 	public void SetDesc(string d){
 		this.description.text = d;
 	} public string ReadDesc(){
-		return description.text;
+		return this.description.text;
 	}
 	
 	IEnumerator HideTask(){
 		anim.Play("TaskHide", 0,0);
-		yield return new WaitForSeconds(4);
-		Destroy(this);
+		yield return new WaitForSeconds(0.1f);
+		Destroy(gameObject);
 	}
 }

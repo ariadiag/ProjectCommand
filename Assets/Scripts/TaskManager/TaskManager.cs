@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TaskManager : MonoBehaviour
 {
     public Task taskPrefab;
-	private List<Task> taskList;
+	public List<Task> taskList;
 	
 	void Start(){
 		taskList = new List<Task>();
@@ -19,9 +20,10 @@ public class TaskManager : MonoBehaviour
 		return newtask;
 	}
 	public bool RemoveTask(string desc){
-		Task temp = taskList.Find( x => x.ReadDesc()==desc);
-		temp.EndTask();
-		return taskList.Remove(temp);
+		if (taskList.Count!=0){
+			Task temp = taskList.Find( t => t.ReadDesc().Equals(desc));
+			return RemoveTask(temp);
+		} return false;
 	}
 	public bool RemoveTask(Task t){
 		t.EndTask();

@@ -16,20 +16,19 @@ VAR r_trust = 10 //Roy's trust in you
 VAR a_trust = 13 //Aaron's trust
 VAR h_trust = 8 //Harper's trust
 VAR s_trust = 10 //Sunny's trust
+VAR medicalDispatch = false //Have Medics been called?
 
 //DEBUG MODE
 TODO: DEBUG MODE
-VAR DEBUG = true
+VAR DEBUG = false
 {DEBUG:
         ->PhaseEvent4.PE4B
-    -else:
-        Do nothing...
 }
 
 //Game Intro
-
+->PhaseEvent2
 ==PhaseEvent2==
-Answer Call #Roy
+Call Started #Roy
     *[Thank you for calling TPS, how can I help?]
     
     *[Captain Estrada? This is TPS.]
@@ -197,7 +196,7 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
     Infirmary! Could you please call medical dispatch?! #Sunny
     *[Right away!]
     *[Of course, Sunny.]
-    *[By the time you get a word out?]
+    *[By the time you get a word out, sure.]
     *[...]
     
 *[...]
@@ -215,6 +214,7 @@ Hello TPS, this is Medical Dispatch. #MD
         *[ARA3-04931]
             Perfect, I see them. We're on our way! #MD
             Just tell them to sit tight, and we'll contact you once we reach them. Good Day. #MD
+            ~medicalDispatch = true
             ->PhaseEvent4
         *[AR-05302]
             I don't see anything... #MD
@@ -238,6 +238,7 @@ Hello TPS, this is Medical Dispatch. #MD
 *[Switch to Sunny]
     Oh-oh, you're back! Are they co- *static*  #Sunny
     Error in transmission #fake
+    TODO: Add glitch variable
 //SITE GLITCHES OUT; PLAYER HAS TO CLOSE POP UPS AND TURN LIGHTS ON
 *[...]
     ->PhaseEvent4
@@ -406,7 +407,7 @@ You're back, get the codes? #Harper
             That didn't seem to work.
             ->opts
         *[J48493D and 506-03]
-            Okay, thanks. Let me... let me just get in here... #Harper
+            Okay, thanks. Let me... I'll call you back in a bit #Harper
         *[U903AA and I928K]
             Try... again. #Harper
             ->opts

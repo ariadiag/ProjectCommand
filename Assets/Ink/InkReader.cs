@@ -38,6 +38,7 @@ public class InkReader : MonoBehaviour
 	//Read Variables
 	public float r_speed = 0.03f;
 	private bool isReading = false;
+	private bool isRinging = false;
 	
     // Start is called before the first frame update
     void Start(){
@@ -68,34 +69,35 @@ public class InkReader : MonoBehaviour
 				Talk();
 			}
 		}
-		//CHECK FOR STORY END
-		if (storyOver){
-			diaBox.interactable = false;
-			ClearTimer();
-		}
 	}
 	
 	public void Talk(){ //Main function for moving dialogue
 		//RESET EVERYTHING
 		ClearUI(); //Reset the choices if needed
 		ClearTimer(); //Reset the timer and all the things
-		
+		isRinging = false;
 		
 		//SET THE NEXT LINE OF TEXT
 			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
-		Read(GetNextLine());
-		FindSpeaker(); //read tags to find the current speaker, change img to match
-		
-		//SET THE CHOICES IF APPLICABLE
-		if (!(story.currentChoices.Count <= 0)){
-			inChoiceTime = true;
-			maxChoice = story.currentChoices.Count-1;
+		string line = GetNextLine();
+		if (line!=null){
+			Read(line);
+			FindSpeaker(); //read tags to find the current speaker, change img to match
+			
+			//SET THE CHOICES IF APPLICABLE
+			if (!(story.currentChoices.Count <= 0)){
+				inChoiceTime = true;
+				maxChoice = story.currentChoices.Count-1;
+				diaBox.interactable = false;
+				DisplayChoices();
+				SetTimerTime();
+			}
+			//RUN TIMER
+			StartCoroutine(Countdown(set_time));
+		} else {
+			storyOver=true;
 			diaBox.interactable = false;
-			DisplayChoices();
-			SetTimerTime();
 		}
-		//RUN TIMER
-		StartCoroutine(Countdown(set_time));
 	}
 	
 	//GETTERS & SETTERS
@@ -106,20 +108,16 @@ public class InkReader : MonoBehaviour
 		return true;
 	} public void PlayKnot(string knotname){
 		story.ChoosePathString(knotname);
+		//Talk(); Replace w/ Ring();
+		StartCoroutine(Ring());
 	}
 	
 	//Public Start Calls
-	public void InitiateCall(){
+	public void InitiateCall(string knotname){
 		//Ring (add sound & visual effects)
-		Read("Incoming Call");
-		diaBox.interactable = true;
-	} public void InitiateCall(TextAsset inkJSONAsset){
-		SetStory(inkJSONAsset);
-		InitiateCall();
-	} public void InitiateCall(TextAsset inkJSONAsset, string knotname){
-		SetStory(inkJSONAsset);
 		PlayKnot(knotname);
-		InitiateCall();
+		storyOver = false;
+		diaBox.interactable = true;
 	}
 		
 	void FindSpeaker(){
@@ -204,7 +202,7 @@ public class InkReader : MonoBehaviour
 	}
 	
 	string GetNextLine(){
-		string txt = "Conversation Ended";
+		string txt = null;
 		if (story.canContinue){
 			txt=story.Continue();
 			s_tags = story.currentTags;
@@ -214,7 +212,14 @@ public class InkReader : MonoBehaviour
 		} return txt; 
 	}
 
-    IEnumerator Countdown(float duration){
+    IEnumerator Ring(){
+		while(isRinging){
+			Debug.Log("Incoming Call!");
+			yield return new WaitForSeconds(0.8f);
+		} yield return null;
+	}
+	
+	IEnumerator Countdown(float duration){
 		while(isReading){ //Don't start timer until all text on screen!
 			yield return new WaitForSeconds(0.1f);
 		} 

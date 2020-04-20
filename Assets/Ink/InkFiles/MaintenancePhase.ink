@@ -115,6 +115,7 @@ Call Started #Roy
 -->DONE
 
 =PE2A
+Oh, you're back? #Aaron
     *[From this report, it looks like the emission valves are closed.]
         Okay, let me try this... #Aaron
         Um... nothing is hapening, the temperature is the same. #Aaron
@@ -137,14 +138,11 @@ Call Started #Roy
         ->PE2A
         
 -Well, it looks good over here so far. Thank you so much! Have a good night! #Aaron
-
     End Call.
 -->DONE
 
 ==PhaseEvent3==
-*[Answer Call.]
-
--Hi, call me Harper. Got another problem for you. #Harper
+Hi, call me Harper. Got another problem for you. #Harper
 Annoying-ass feedback is coming over the intercom system. #Harper
 Estrada sent Bedford into the Communications Room. We need help, can you do it? #Harper
     **[Of course, Harper.]
@@ -167,16 +165,11 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
         Fuck it. #Harper
         ->DONE
         TODO: Fix the above silent option
-        
-*[...]
-    ->PhaseEvent3
 //PLAYER FINDS SHIP INFORMATION; THEN FAKE CALL; THEN POWER GOES OUT
 -->DONE
 
 =PE3A
-*[Answer Call]
-
--Th-this is Sunny speaking. I mean, uh, Sunny du Vois speaking. Acting ph-physician and medic on the Red Liner. #Sunny
+Th-this is Sunny speaking. I mean, uh, Sunny du Vois speaking. Acting ph-physician and medic on the Red Liner. #Sunny
     We seem to have a m-major problem here! #Sunny
     *[Sunny, what's going on?]
     *[What happened?]
@@ -198,10 +191,6 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
     *[Of course, Sunny.]
     *[By the time you get a word out, sure.]
     *[...]
-    
-*[...]
-    ->PE3A
-
 //PLAYER HITS MEDICAL DISPATCH BUTTON
 -->DONE
 
@@ -245,7 +234,6 @@ Hello TPS, this is Medical Dispatch. #MD
 -->DONE
 
 =PE4A
-*[Answer Call]
     Dispatch better be coming. Captain's gone. #Harper
     Cargo flattened his chest when our ship went sideways. #Harper
     I need y-Damnit Sunny! Get Bedford out of here! #Harper
@@ -279,9 +267,6 @@ Hello TPS, this is Medical Dispatch. #MD
             Hey! This isn't the time to be slacking! #Harper
             Just... Check whatever files you have and get back to me. #Harper
 -<i>On Hold.</i>
-
-*[...]
-    ->PE4A
 -->DONE
     
 =PE4B

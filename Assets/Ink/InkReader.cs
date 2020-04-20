@@ -109,13 +109,15 @@ public class InkReader : MonoBehaviour
 	} public void PlayKnot(string knotname){
 		story.ChoosePathString(knotname);
 		//Talk(); Replace w/ Ring();
-		StartCoroutine(Ring());
 	}
 	
 	//Public Start Calls
 	public void InitiateCall(string knotname){
 		//Ring (add sound & visual effects)
+		isRinging = true;
+		StartCoroutine(Ring());
 		PlayKnot(knotname);
+		diaText.text = "Answer Call";
 		storyOver = false;
 		diaBox.interactable = true;
 	}
@@ -199,6 +201,7 @@ public class InkReader : MonoBehaviour
 		timer.fillAmount = 1;
 		set_time = default_time;
 		inChoiceTime = false;
+		isRinging = false;
 	}
 	
 	string GetNextLine(){
@@ -206,6 +209,10 @@ public class InkReader : MonoBehaviour
 		if (story.canContinue){
 			txt=story.Continue();
 			s_tags = story.currentTags;
+			if (story.canContinue && txt == ""){
+				txt = story.Continue();
+				s_tags = story.currentTags;
+			}
 		} else {
 			storyOver = true;
 			diaBox.interactable = false;

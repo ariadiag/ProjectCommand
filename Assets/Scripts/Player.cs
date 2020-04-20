@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public bool readNote = false;
+	public Camera camera;
 	
-	public void setVariableReadNote(bool torf){
-		readNote = torf;
+	void Start(){
+		this.camera = GetComponent<Camera>();
 	}
 }

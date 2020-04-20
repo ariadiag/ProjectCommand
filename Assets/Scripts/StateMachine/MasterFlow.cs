@@ -13,7 +13,7 @@ public class MasterFlow : MonoBehaviour
 	List<Beat> goPhase;
 	
 	bool tutorial = true;
-	bool mainten = false;
+	bool mainten = true;
 	
 	public Player player;
 	public InkReader reader;
@@ -36,6 +36,7 @@ public class MasterFlow : MonoBehaviour
 		//Game Starts (Fade In)
 		//3 screens on; yours flickering - or arrow above
 		
+		
 		if (tutorial){
 			//Player Reads Note -> Arrow point to Breaker
 				//Turn Lights On
@@ -51,7 +52,8 @@ public class MasterFlow : MonoBehaviour
 			//Read 2nd Note -> Arrow point to supervisor's desk
 				//Blinking file to open/download
 			
-		} else if (mainten){
+		} else 
+			if (mainten){
 			StartCoroutine(MaintenancePhase());
 			mainten = false;
 		}
@@ -109,14 +111,14 @@ public class MasterFlow : MonoBehaviour
 			//PopUp(beat.popUpCount);
 			while(!reader.storyOver){
 				yield return new WaitForSeconds(0.1f);
-			} Debug.Log("Go to Blackout!");
+			} 
 			if (beat.hasBlackOut){
 				breaker.FlipSwitch();
 				while(!breaker.AreLightsOn()){
 					yield return new WaitForSeconds(0.1f);
 				}
-				yield return new WaitForSeconds(beat.waitLength);
 			}
+			yield return new WaitForSeconds(beat.waitLength);
 		} Debug.Log("Game Over");
 	}
 	

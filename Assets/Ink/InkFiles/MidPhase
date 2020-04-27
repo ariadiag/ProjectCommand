@@ -19,7 +19,7 @@
     *[...]
 //Player must open a file, then play mini-game, then get the AFRN.
 -->DONE    
-=MPE1A
+
 - Got the AFRN yet? #Harper
     *[9303H3]
         Try again. #Harper
@@ -30,7 +30,7 @@
     *[...] 
         H-hello? #Harper
 -->DONE 
-=MPE1B
+
 - Okay, first part is done. But I'll be straight up with you, I’m not sure what to do next. You’re the responder, find the answer. #Harper
     *[Um, okay. Let me look.]
     *[On it.]
@@ -39,7 +39,7 @@
     *[...]
 //Player needs to open a flashing folder, 3 ads will appear. Find the Encryption Defense Folder, go through 4 steps.
 -->DONE
-=MPE1C
+
 - Found the next step? #Harper
     *[Hey Harper, to keep going I need your own AFRN and Audio Manager ID.]
     *[Looks good on my end, I’ll need your AFRN and Audio Manager ID to continue.]
@@ -60,7 +60,7 @@
         ~h_trust = h_trust - 1
     *[...]
 -->DONE
-=MPE1D
+
 //Player has to call Aaron.
 *[Call Aaron]
 - Um….Hello? Sorry, I forgot how to use this thing. How can I help you? #Aaron
@@ -105,6 +105,7 @@
         ~a_trust = a_trust - 1
     *[...]
 -->DONE
+
 //Now that you have both items, look at the list again, complete step 3. Find a folder named Encryption Levels in the same External Encryption Defense Folder. Use the AmID to cross reference between a long list of encryption status’. Find the right one, it reads: 84T3-FCAD (Argon Albatross) = Encryption Level ‘Axion’. 
 //Now take that encryption level and push it to their ship  (this would be the exact same button push mechanic for uploading files from coworker’s computers to our computer, just a simple button press).
 //A tutorial will open the option of solving a task with any number of NPCs. This is shown by one final pop-up window. It will say: Call any member of the Red Liner to indicate the encryption’s success.
@@ -287,7 +288,7 @@
     *[If you say so.]
     *[...]
 -->DONE  
-=MPE2A
+
 //The player will have to go back into the Engine Diagnostic file from the previous phase event. They will then have to take this graph to the Procedures folder. Then locate the Hardware Failure folder. Now find the Engines folder. When they try to open the Albatross folder they’ll have to beat the hacking mini-game to open it. Finally the instructions will be laid out.
 //Now go through the steps one at a time: (This is you talking to whoever you are speaking to)
 - What do you need from me? #Aaron
@@ -428,7 +429,7 @@
     *[...]
         ~s_trust = s_trust - 1
 -->DONE
-=MPE2B
+
 //If anyone tries to fix the wiring but Aaron it will cause them damage, they won’t die. This establishes the idea of certain NPCs having certain advantages over others in specific jobs, and the idea of NPC damage and eventual death.
 - Let me see……..give me a minute………………………………………….got one………………………..make that two……………………..thr-wait……..three. O-okay, I think that’ll work. #Aaron
     *[Great job Aaron.]

@@ -20,9 +20,9 @@ VAR medicalDispatch = false //Have Medics been called?
 
 //DEBUG MODE
 TODO: DEBUG MODE
-VAR DEBUG = true
+VAR DEBUG = false
 {DEBUG:
-        ->MidPhaseEvent1
+        ->PhaseEvent4.PE4B
 }
 
 //Game Intro

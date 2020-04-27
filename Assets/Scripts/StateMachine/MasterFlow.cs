@@ -48,7 +48,6 @@ public class MasterFlow : MonoBehaviour
 				tmanager.RemoveTask("Turn On the Lights");
 				tutorial = false;
 				mainten = true;
-				
 			}
 			//Read 2nd Note -> Arrow point to supervisor's desk
 				//Blinking file to open/download

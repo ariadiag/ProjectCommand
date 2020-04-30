@@ -50,7 +50,6 @@ public class cameramovement : MonoBehaviour
 
             if (Input.mousePosition.x > screenWidth - Boundary)
             {
-                Boundary = 
                 rotation.y += Camspeed * Time.deltaTime;
             }
             if (Input.mousePosition.x < 0 + Boundary)

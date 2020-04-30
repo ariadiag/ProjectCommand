@@ -12,6 +12,9 @@ public class cameramovement : MonoBehaviour
     private float timetomove;
     public int speed;
 
+ 
+
+
     public int Boundary = 50;
     public int Camspeed = 10;
 
@@ -20,11 +23,17 @@ public class cameramovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isSitting = false;
+        isSitting = true;
         cameraPos = transform.position;
-        Cursor.visible = false;
+        Cursor.visible = true;
         screenHeight = Screen.height;
         screenWidth = Screen.width;
+
+        //isSitting = false;
+        //cameraPos = transform.position;
+        //Cursor.visible = false;
+        //screenHeight = Screen.height;
+        //screenWidth = Screen.width;
     }
 
     // Update is called once per frame
@@ -46,6 +55,15 @@ public class cameramovement : MonoBehaviour
 
         if(isSitting)
         {
+          
+
+           
+
+           
+          
+
+
+
             Vector3 rotation = transform.eulerAngles;
 
             if (Input.mousePosition.x > screenWidth - Boundary)
@@ -66,7 +84,9 @@ public class cameramovement : MonoBehaviour
             }
             transform.eulerAngles = rotation;
 
-            if (Input.GetKey(KeyCode.Space))
+            
+
+            /*if (Input.GetKey(KeyCode.Space))
             {
                 isSitting = false;
                 Cursor.visible = false;
@@ -75,12 +95,13 @@ public class cameramovement : MonoBehaviour
                 ThirdPersonMovement.instance.moving = true;
                 
             }
+            */
         }
 
 
     }
 
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
 
 
@@ -104,5 +125,5 @@ public class cameramovement : MonoBehaviour
         }
 
     }
-
+    */
 }

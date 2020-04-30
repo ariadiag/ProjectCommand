@@ -12,8 +12,11 @@ public class cameramovement : MonoBehaviour
     private float timetomove;
     public int speed;
 
- 
-
+    public int RotationMaxUp;
+    public int RotationMaxDown;
+    public int RotationMaxLeft;
+    public int RotationMaxRight;
+    private bool canMove;
 
     public int Boundary = 50;
     public int Camspeed = 10;
@@ -55,36 +58,31 @@ public class cameramovement : MonoBehaviour
 
         if(isSitting)
         {
-          
-
-           
-
-           
-          
-
-
-
             Vector3 rotation = transform.eulerAngles;
 
-            if (Input.mousePosition.x > screenWidth - Boundary)
+            if (Input.mousePosition.x > screenWidth - Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).y < RotationMaxRight) //Wright Bros (whatever that means)
             {
+
                 rotation.y += Camspeed * Time.deltaTime;
             }
-            if (Input.mousePosition.x < 0 + Boundary)
+            if (Input.mousePosition.x < 0 + Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).y > RotationMaxLeft) //left
             {
+
                 rotation.y -= Camspeed * Time.deltaTime;
             }
-            if (Input.mousePosition.y > screenHeight - Boundary)
+            if (Input.mousePosition.y > screenHeight - Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x > RotationMaxUp) // up
             {
+
                 rotation.x -= Camspeed * Time.deltaTime;
             }
-            if (Input.mousePosition.y < 0 + Boundary)
+            if (Input.mousePosition.y < 0 + Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x < RotationMaxDown) // down
             {
                 rotation.x += Camspeed * Time.deltaTime;
             }
             transform.eulerAngles = rotation;
 
-            
+
+
 
             /*if (Input.GetKey(KeyCode.Space))
             {

@@ -1,5 +1,5 @@
 ==MidPhaseEvent1==
-*[Answer Call.]
+Answer Call.
 
 - Okay, let’s begin. Not sure if you’ve done this before, because I haven't either. I do know the first step however. #Harper
     *[Sounds good Harper.]
@@ -20,6 +20,7 @@
 //Player must open a file, then play mini-game, then get the AFRN.
 -->DONE    
 
+=MPE1A
 - Got the AFRN yet? #Harper
     *[9303H3]
         Try again. #Harper
@@ -31,6 +32,7 @@
         H-hello? #Harper
 -->DONE 
 
+=MPE1B
 - Okay, first part is done. But I'll be straight up with you, I’m not sure what to do next. You’re the responder, find the answer. #Harper
     *[Um, okay. Let me look.]
     *[On it.]
@@ -40,6 +42,7 @@
 //Player needs to open a flashing folder, 3 ads will appear. Find the Encryption Defense Folder, go through 4 steps.
 -->DONE
 
+=MPE1C
 - Found the next step? #Harper
     *[Hey Harper, to keep going I need your own AFRN and Audio Manager ID.]
     *[Looks good on my end, I’ll need your AFRN and Audio Manager ID to continue.]
@@ -61,6 +64,7 @@
     *[...]
 -->DONE
 
+=MPE1D
 //Player has to call Aaron.
 *[Call Aaron]
 - Um….Hello? Sorry, I forgot how to use this thing. How can I help you? #Aaron
@@ -169,7 +173,7 @@
 -->DONE
 
 //Go to your Procedures folder and find the External Scans folder. Open it, a pop-up window will appear just like when you typed in ‘Axion’. It requires their ship’s External Scan Routing Number (ESRN). Navigate back into the Routing folder, find the ESRN. Enter it in the pop-up window.
-
+=MPE2A
 - Did you start the scan? #Aaron
     *[Alright, the scan is underway; you’ll have to retrieve the results from your end.]
         Okay! #Aaron
@@ -203,6 +207,7 @@
 //As the scan is loading, the call will drop because of a power surge, a total blackout will occur in your command room. *female voice sounds over YOUR intercom (Power failure. Power failure. Power failure) Go to the breaker box to turn it on. 
 -->DONE
     
+=MPE2B
 //Coming back, you must call the last person you spoke to.
 - Hey! Something is happening, the ship just jerked again! This time I heard a loud noise...do you want me to go, or should someone else while I stay at the bridge to handle the scan results? #Aaron
     *[No, stay at the bridge; I'll call someone else.]
@@ -291,6 +296,8 @@
 
 //The player will have to go back into the Engine Diagnostic file from the previous phase event. They will then have to take this graph to the Procedures folder. Then locate the Hardware Failure folder. Now find the Engines folder. When they try to open the Albatross folder they’ll have to beat the hacking mini-game to open it. Finally the instructions will be laid out.
 //Now go through the steps one at a time: (This is you talking to whoever you are speaking to)
+
+=MPE3A
 - What do you need from me? #Aaron
     *[Tell me what the engine output is reading.]
         Right. #Aaron
@@ -431,6 +438,7 @@
 -->DONE
 
 //If anyone tries to fix the wiring but Aaron it will cause them damage, they won’t die. This establishes the idea of certain NPCs having certain advantages over others in specific jobs, and the idea of NPC damage and eventual death.
+=MPE3B
 - Let me see……..give me a minute………………………………………….got one………………………..make that two……………………..thr-wait……..three. O-okay, I think that’ll work. #Aaron
     *[Great job Aaron.]
         ~a_trust = a_trust + 1
@@ -486,6 +494,7 @@
 -->DONE
 
 //There will be a fire going on in the Mess Hall, it was started due to the attackers tampering with power frequencies in the burners/whatever is used to cook food.
+=MPE4A
 - Oh god…..um….t-there’s a fire! #Aaron
     *[Oh my god! Let's put it out!]
         A-alright! #Aaron
@@ -536,6 +545,7 @@
 
 //Play the Decrypting mini-game to override the fire failsafe. If you fail twice the person inside the room will die.
 //With Death: (This dialog is ignored if no one dies) A surviving member of the crew will come in and see the dead body.
+=MPE4B
 - Oh fuck...they’re not moving! W-what happened? #Aaron
     *[I took too long….I’m sorry Aaron…]
         ~a_trust = a_trust - 3

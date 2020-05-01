@@ -32,6 +32,7 @@
         ~s_trust = s_trust - 1
 -->DONE
 
+=GPE1A
 //This is the person who is dealing with the shuttles:
 - Hey, I just got here…...let me go check Shuttle 1-A………………....……….we’ve got a slight problem……...look’s like the Shuttle Bay doors won’t open because of the ship’s instability. We're gonna need to stabilize the reactor to buy us time to get those doors open… #Aaron
     *[Okay, let’s get to it, head there now.]
@@ -54,6 +55,7 @@
 -->DONE
 
 //Now you need to go into the Procedures folder, find the Stability Levels folder. Then find Reactors, then Shuttle Reactors, then the Albatross folder. Then you’ll need to ask which Reactor the ship has.
+=GPE1B
 - Hey, have you found anything? #Aaron
     *[Which reactor is Redliner running?]
     *[What reactor is the Redliner using?]
@@ -96,6 +98,7 @@
     *[...]
 -->DONE
 
+=GPE1C
 //Now open the right reactor folder and read the step list:
     //Step 1: Put the reactor in standby mode.
     //Step 2: Assess reactor damage/current situation.
@@ -228,6 +231,7 @@
     *[...]    
 -->DONE
 
+=GPE1D
 //Now find the System Frame Update Code (SFUC) inside the Shuttle Reactors Folder, then the Albatross folder. Find the Frame Update Folder. It will display a paragraph on how to update the system’s frames alongside the (SFUC).
 // If Wrong Answer: The system will lockout and require the player play the decrypt mini-game from their location, there is no death or damage here. It serves as a time waste.
 - Um..the system just locked on me….I hope that was the right code……Here i'll use our established link, try and break through it.. #Aaron
@@ -235,6 +239,7 @@
 - Um….the system is l-locking me out……d-do you think you could break through this lock? You c-could use the established link we have.... #Sunny
 -->DONE
 
+=GPE1E
 //If Correct Answer: Continue as normal.
 - Okay, it’s starting to update! Should I close it up? #Aaron
     *[No, one last step. Check the reactor’s pressurization after the update finishes.]
@@ -283,6 +288,7 @@
     *[...]
 -->DONE
 
+=GPE1F
 //Now go into the Shuttle Reactors Folder, then the Albatross folder. Find the Pressurization Default. It will display a paragraph on how to reset it. You will need to find the reset code inside that paragraph.
 // If Wrong Answer: Answering wrong will cause the ship to jerk violently, damaging whoever is in the reactor room, they will slam into a wall as the ship is thrown, killing them. 
 // A living member of the ship will THEN call you.
@@ -327,6 +333,7 @@
         ~s_trust = s_trust - 3
 -->DONE
 
+=GPE1G
 //Without Death
 - Alright let’s see here……..pressure is rising……………..steady so far………….looks good to me, I’ll sit tight for a while, make sure it's steady. #Aaron
     *[Thank you Aaron.]
@@ -436,6 +443,7 @@
     *[...]
 -->DONE
 
+=GPE2A
 //Go onto the right screen and find the (Ship Link) Transponder Map, this will be established from an earlier link and have a display of nearby areas you can choose to send the crew (alternate endings).
 - Alright! Let me put those in…………..next we’re going to need to divert the shield……….which might require another person. #Aaron
     *[Alright, I’ll call Harper.]
@@ -468,6 +476,7 @@
         I’ll just g-go myself… #Sunny
 -->DONE
 
+=GPE2B
 // This is assuming you sent another person to the shields.
 - Hey! So I just got to Shielding Maintenance. What do we need to do? #Aaron
     *[Good, let me get that info.]
@@ -495,6 +504,7 @@
     *[...]
 -->DONE   
     
+=GPE2C
 // This info can be gathered in two different ways. One through calling the person back who is at the Escape Shuttle or by looking it up on your computer.	
     // Looking it up: To look it up, go into Emergency Escape Operations, then find Albatross, then look for the Escape Shuttle Information. There will be a collection of info about the Escape Shuttle’s specs. On that list will be the Escape Shuttle Shielding Transponder ID: (53m-cba)
     // Calling person you sent to Escape Shuttle:
@@ -507,6 +517,7 @@
             - Oh! S-sure, let me get the spec panel up……………..so...its 53m-cba! #Sunny
 -->DONE 
 
+=GPE2D
 // When you have the right info you have to call the person back.
 // If Wrong Answer: Getting the answer wrong here will lock the shielding system, requiring the player to try and win the decrypting mini-game. Losing three times will cause the shielding to malfunction, making it inoperable (they won't be able to use it).
 - Hmm….nothing happened…………………………...wait……………...something’s erroring out! The wrong code must’ve glitched the failing s-system! #Aaron
@@ -514,6 +525,7 @@
 - O-okay! Let me try……...okay…………...w-wait……….the shields are dropping! The wrong c-code must’ve glitched the fragile s-system! #Sunny
 -->DONE
 
+=GPE2E
 //Now it’s either a normal or raced finish. If the player got the last question wrong, the timer which has been counting down since the beginning will immediately flip to one minute regardless or its past time. The ship will begin its final arc of falling apart.
     //If the player answered correctly, the timer will shoot to 3 minutes.
 - Okay. I’m heading back to the escape shuttle. #Aaron

@@ -112,6 +112,7 @@ public class MasterFlow : MonoBehaviour
 			while(!reader.storyOver){
 				yield return new WaitForSeconds(0.1f);
 			} 
+			PopUp(beat.popUpCount);
 			if (beat.hasBlackOut){
 				breaker.FlipSwitch();
 				while(!breaker.AreLightsOn()){
@@ -122,15 +123,22 @@ public class MasterFlow : MonoBehaviour
 		} Debug.Log("Game Over");
 	}
 	
+	void PopUp(int num){
+		for (int i = 0; i < num; i++){
+			//PopUp a random
+			Debug.Log("POP UP BOO!");
+		}
+	}
+	
 	public void EstablishBeats(){
 		maintPhase = new List<Beat>();
 		midPhase = new List<Beat>();
 		goPhase = new List<Beat>();
 	//MAINTENANCE
-		string[] knots = {"PhaseEvent2","PhaseEvent2.PE2A","PhaseEvent3","Fake1","PhaseEvent3.PE3A","PhaseEvent3.PE3B","PhaseEvent4","PhaseEvent4.PE4A","PhaseEvent4.PE4B","PhaseEvent4.PE4C","PhaseEvent5.PE5A","PhaseEvent5.PE5B"};
-		int[] popUps = {1,0,0,0,0,0,4,0,0,0,0,0};
-		bool[] blackouts = {false,false,false,true, false,false,true,false,false,false,false,false};
-		int[] waitlengths = {0,4,8,0,0,0,4,6,0,0,0,0};
+		string[] knots = {"PhaseEvent2","PhaseEvent3","Fake1","PhaseEvent3.PE3A","PhaseEvent3.PE3B","PhaseEvent4","PhaseEvent4.PE4A","PhaseEvent4.PE4B","PhaseEvent4.PE4C","PhaseEvent5.PE5A","PhaseEvent5.PE5B"};
+		int[] popUps = {1,0,0,0,0,4,0,0,0,0,0};
+		bool[] blackouts = {false,false,true, false,false,true,false,false,false,false,false};
+		int[] waitlengths = {0,8,0,0,0,4,6,0,0,0,0};
 		//Beat b = new Beat("PE2A", 5, true, 10);
 		//Debug.Log(b.knotname);
 		for (int i = 0; i < knots.Length; i++){

@@ -39,6 +39,7 @@ public class InkReader : MonoBehaviour
 	public float r_speed = 0.03f;
 	private bool isReading = false;
 	private bool isRinging = false;
+	private string line = "";
 	
     // Start is called before the first frame update
     void Start(){
@@ -76,27 +77,33 @@ public class InkReader : MonoBehaviour
 		ClearUI(); //Reset the choices if needed
 		ClearTimer(); //Reset the timer and all the things
 		isRinging = false;
-		
-		//SET THE NEXT LINE OF TEXT
-			//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
-		string line = GetNextLine();
-		if (line!=null){
-			Read(line);
-			FindSpeaker(); //read tags to find the current speaker, change img to match
 			
-			//SET THE CHOICES IF APPLICABLE
-			if (!(story.currentChoices.Count <= 0)){
-				inChoiceTime = true;
-				maxChoice = story.currentChoices.Count-1;
-				diaBox.interactable = false;
-				DisplayChoices();
-				SetTimerTime();
-			}
-			//RUN TIMER
-			StartCoroutine(Countdown(set_time));
+		if (isReading){
+			diaText.text = line;
+			isReading = false;
 		} else {
-			storyOver=true;
-			diaBox.interactable = false;
+			
+			//SET THE NEXT LINE OF TEXT
+				//Replace next line with a Read method so that choice and everything is disabled until the full text has been read through. For now, we can make it a typewriter, but eventually we want to make it last until the VA is done at least
+			line = GetNextLine();
+			if (line!=null){
+				Read(line);
+				FindSpeaker(); //read tags to find the current speaker, change img to match
+				
+				//SET THE CHOICES IF APPLICABLE
+				if (!(story.currentChoices.Count <= 0)){
+					inChoiceTime = true;
+					maxChoice = story.currentChoices.Count-1;
+					diaBox.interactable = false;
+					DisplayChoices();
+					SetTimerTime();
+				}
+				//RUN TIMER
+				StartCoroutine(Countdown(set_time));
+			} else {
+				storyOver=true;
+				diaBox.interactable = false;
+			}
 		}
 	}
 	
@@ -186,6 +193,7 @@ public class InkReader : MonoBehaviour
 	
 	void OnClickChoiceButton(Choice choice){
 		story.ChooseChoiceIndex(choice.index);
+		isReading = false;
 		Talk();
 	}
 	
@@ -248,10 +256,12 @@ public class InkReader : MonoBehaviour
 
 	IEnumerator TypeWriter(string line){
 		isReading = true;
-		foreach (char c in line){
-			diaText.text += c;
-			yield return new WaitForSeconds(r_speed);
+		if (isReading){
+			foreach (char c in line){
+				diaText.text += c;
+				yield return new WaitForSeconds(r_speed);
+			}
+			isReading = false;
 		}
-		isReading = false;
 	}
 }

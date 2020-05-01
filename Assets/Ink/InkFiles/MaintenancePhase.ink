@@ -104,15 +104,17 @@ Call Started #Roy
     Oh, wait... No, drop the last 3. #Aaron
     It's 93015-H. #Aaron
     *[It's no problem at all!]
-    
     *[Let me take a look.]
-    
     *[Oh, don't worry. Take your time...]
     ~a_trust = a_trust + 1
         Oh, thank you. Uh, well, I'll wait here... #Aaron
     *[...]
 //POP UP TUT. PLAYER SEARCHES ENGINE ROOM LOG. 
--->DONE
+-(opts)On Hold.
+    *[Return Call.]
+        ->PE2A
+    *[<5000>...]
+        ->opts
 
 =PE2A
 Oh, you're back? #Aaron
@@ -122,7 +124,6 @@ Oh, you're back? #Aaron
         Maybe, you could look again? #Aaron
         ->PE2A
     *[Hey, Aaron, it looks like the ventilation stopped working.]
-    
     *[Hmm, looks like the CO2 levels are clogging the alternator.]
         Okay, let me try this... #Aaron
         Um... nothing is hapening, the temperature is the same. #Aaron
@@ -144,22 +145,23 @@ Oh, you're back? #Aaron
 ==PhaseEvent3==
 Hi, call me Harper. Got another problem for you. #Harper
 Annoying-ass feedback is coming over the intercom system. #Harper
-Estrada sent Bedford into the Communications Room. We need help, can you do it? #Harper
-    **[Of course, Harper.]
-    **[That's why I'm here.]
-    **[What am I going to do, leave?]
+Estrada sent Bedford into the Communications Room. #Harper
+Think you could help us out? #Harper
+    *[Of course, Harper.]
+    *[That's why I'm here.]
+    *[What am I going to do, leave?]
     ~h_trust = h_trust-1
         Try that again, I dare you. #Harper
         I just needed to know you could hear me so <>
-    **[...]
+    *[...]
     ~h_trust = h_trust-1
         You there? #Harper
         Listen up, <> #Harper
     
 -<>I know we're in range. #Harper
 Check our map file and tell me which intercom box is broadcasting. #Harper
-    **[Alright, let me check.]
-    **[...]
+    *[Alright, let me check.]
+    *[...]
         Hey, can you hear me? #Harper
         Are you there? #Harper
         Fuck it. #Harper
@@ -169,7 +171,8 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
 -->DONE
 
 =PE3A
-Th-this is Sunny speaking. I mean, uh, Sunny du Vois speaking. Acting ph-physician and medic on the Red Liner. #Sunny
+Th-this is Sunny speaking. I mean, uh, Sunny du Vois speaking.  #Sunny
+    Acting ph-physician and medic on the Red Liner. #Sunny
     We seem to have a m-major problem here! #Sunny
     *[Sunny, what's going on?]
     *[What happened?]

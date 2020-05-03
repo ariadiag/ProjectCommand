@@ -9,10 +9,11 @@ public class speechtext : MonoBehaviour
     public Text speech;
     public string[] words;
     private int currText;
+    private AudioManager source;
     // Start is called before the first frame update
     void Start()
     {
-
+        source = FindObjectOfType<AudioManager>();
 
     }
 
@@ -22,6 +23,7 @@ public class speechtext : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currText++;
+            source.Play("TextClick");
         }
 
 

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿		using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +6,12 @@ public class Breaker : MonoBehaviour
 {
 	public bool lightsOn = false;
 	private bool _triggered = false;
+	public GameObject Light;
 	
 	void Update(){
 		if (_triggered){
 			if (Input.GetKeyDown(KeyCode.E)){
+				GetComponent<Light>().enabled = !GetComponent<Light>().enabled;
 				FlipSwitch();
 			}
 		}

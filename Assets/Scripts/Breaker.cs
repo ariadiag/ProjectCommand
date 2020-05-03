@@ -21,7 +21,7 @@ public class Breaker : MonoBehaviour
 	}
 	public bool FlipSwitch(){
 		lightsOn = !lightsOn;
-		Debug.Log("Lights Are Now " + lightsOn.ToString());
+		Debug.Log("Lights Are Now" + lightsOn.ToString());
 		return AreLightsOn();
 	}
 	
@@ -31,5 +31,4 @@ public class Breaker : MonoBehaviour
 	} void OnTriggerExit(Collider col){
 		_triggered = false;
 	}
-	
 }

@@ -5,10 +5,21 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sfx;
+    public static AudioManager player;
     
     // Use this for things needing initialization
     void Awake()
     {
+        if (player == null)
+            player = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
         foreach (Sound curr in sfx)
         {
             curr.source = gameObject.AddComponent<AudioSource>();

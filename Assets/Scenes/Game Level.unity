@@ -3283,8 +3283,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BreakerSwitch
     clip: {fileID: 8300000, guid: 8f6bedaa9665c3343930c67e86550a0d, type: 3}
-    volume: 0.208
-    pitch: 0.1
+    volume: 0.43
+    pitch: 0.74
     loop: 0
     source: {fileID: 0}
   - name: MenuButton

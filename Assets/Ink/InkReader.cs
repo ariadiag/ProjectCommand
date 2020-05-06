@@ -40,14 +40,17 @@ public class InkReader : MonoBehaviour
 	private bool isReading = false;
 	private bool isRinging = false;
 	private string line = "";
-	
-    // Start is called before the first frame update
-    void Start(){
+
+	private AudioManager source;
+
+	// Start is called before the first frame update
+	void Start(){
         story = new Story(inkJSONAsset.text);
 		storyOver = false;
 		diaText = diaBox.GetComponentInChildren<TextMeshProUGUI>();
 		diaBox.interactable = false;
-    }
+		source = FindObjectOfType<AudioManager>();
+	}
 	
 	void Update(){
 		//ENABLE KEYBOARD SELECTION
@@ -230,6 +233,7 @@ public class InkReader : MonoBehaviour
     IEnumerator Ring(){
 		while(isRinging){
 			Debug.Log("Incoming Call!");
+			source.Play("CallTone");
 			yield return new WaitForSeconds(0.8f);
 		} yield return null;
 	}
@@ -259,6 +263,7 @@ public class InkReader : MonoBehaviour
 		if (isReading){
 			foreach (char c in line){
 				diaText.text += c;
+				source.Play("TextClick");
 				yield return new WaitForSeconds(r_speed);
 			}
 			isReading = false;

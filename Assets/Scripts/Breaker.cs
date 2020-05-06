@@ -24,6 +24,7 @@ public class Breaker : MonoBehaviour
 	public bool FlipSwitch(){
 		lightsOn = !lightsOn;
 		Debug.Log("Lights Are Now" + lightsOn.ToString());
+		FindObjectOfType<AudioManager>().Play("BreakerSwitch");
 		return AreLightsOn();
 	}
 	

@@ -9,6 +9,12 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    private AudioManager source;
+
+    private void Start()
+    {
+        source = FindObjectOfType<AudioManager>();
+    }
 
     void Update()
     {
@@ -28,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume ()
     {
         pauseMenuUI.SetActive(false);
+        source.Play("MenuButton");
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -35,6 +42,7 @@ public class PauseMenu : MonoBehaviour
     void Pause ()
     {
         pauseMenuUI.SetActive(true);
+        source.Play("MenuButton");
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

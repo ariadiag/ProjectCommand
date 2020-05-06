@@ -3277,8 +3277,26 @@ MonoBehaviour:
   sfx:
   - name: TextClick
     clip: {fileID: 8300000, guid: 3b7dba41a7cae0041a885ba5665407c7, type: 3}
+    volume: 0.25
+    pitch: 0.33
+    loop: 0
+    source: {fileID: 0}
+  - name: BreakerSwitch
+    clip: {fileID: 8300000, guid: 8f6bedaa9665c3343930c67e86550a0d, type: 3}
     volume: 0.208
     pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: MenuButton
+    clip: {fileID: 8300000, guid: dabdb2af018d6dd40b7b5ae187b9bcd8, type: 3}
+    volume: 0.208
+    pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: CallTone
+    clip: {fileID: 8300000, guid: e17be4ecdd81c91429a7e496984eee9d, type: 3}
+    volume: 0.28
+    pitch: 1.73
     loop: 0
     source: {fileID: 0}
 --- !u!4 &201374136

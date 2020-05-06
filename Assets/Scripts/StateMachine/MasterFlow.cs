@@ -13,7 +13,7 @@ public class MasterFlow : MonoBehaviour
 	List<Beat> goPhase;
 	
 	bool tutorial = true;
-	bool mainten = true;
+	bool mainten = false;
 	
 	public Player player;
 	public InkReader reader;
@@ -52,8 +52,7 @@ public class MasterFlow : MonoBehaviour
 			//Read 2nd Note -> Arrow point to supervisor's desk
 				//Blinking file to open/download
 			
-		} else 
-			if (mainten){
+		} else if (mainten){
 			StartCoroutine(MaintenancePhase());
 			mainten = false;
 		}

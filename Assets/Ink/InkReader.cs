@@ -233,6 +233,7 @@ public class InkReader : MonoBehaviour
     IEnumerator Ring(){
 		while(isRinging){
 			Debug.Log("Incoming Call!");
+			source.Play("CallTone");
 			yield return new WaitForSeconds(0.8f);
 		} yield return null;
 	}

@@ -26,7 +26,6 @@ public class Interactable : MonoBehaviour
 	
 	public void PickUp(){
 		Debug.Log("TOUCHED NOTE!");
-		player.readNote = true;
 		button.interactable = false;
 		this.transform.position = holder.transform.position;
 		this.transform.parent = holder.transform;
@@ -36,6 +35,7 @@ public class Interactable : MonoBehaviour
 	
 	public void Drop(){
 		Debug.Log("NOTE DROPPED!");
+		player.readNote = true;
 		dropped = true;
 	}
 }

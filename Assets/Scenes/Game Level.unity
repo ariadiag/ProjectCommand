@@ -6172,7 +6172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   readNote: 0
-  breaker: {fileID: 0}
+  breaker: {fileID: 1877949488}
   camera: {fileID: 0}
 --- !u!1 &386992851
 GameObject:
@@ -32085,10 +32085,11 @@ GameObject:
   - component: {fileID: 1877949483}
   - component: {fileID: 1877949487}
   - component: {fileID: 1877949486}
+  - component: {fileID: 1877949484}
   - component: {fileID: 1877949488}
   m_Layer: 0
   m_Name: '"BreakerBox"'
-  m_TagString: Untagged
+  m_TagString: Breaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32107,6 +32108,19 @@ Transform:
   m_Father: {fileID: 518691396}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1877949484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877949482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.097905, y: 1.0807796, z: 1.255293}
+  m_Center: {x: -0.006465204, y: 0.040389713, z: -0.021596028}
 --- !u!23 &1877949486
 MeshRenderer:
   m_ObjectHideFlags: 0

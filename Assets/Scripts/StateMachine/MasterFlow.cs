@@ -22,6 +22,7 @@ public class MasterFlow : MonoBehaviour
 	
 	public TaskManager tmanager;
 	private bool running; //check if game is running
+	bool phaseEnd = false;
 	
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,10 @@ public class MasterFlow : MonoBehaviour
 			if (player.readNote){
 				Task t1 = tmanager.NewTask("Turn On the Lights");
 				//AddArrow(breaker.transform.position);
+				phaseEnd = true;
 				player.readNote = false;
-			} if (breaker.AreLightsOn()){
+			} 
+			if (phaseEnd && breaker.AreLightsOn()){
 				tmanager.RemoveTask("Turn On the Lights");
 				tutorial = false;
 				mainten = true;
@@ -105,6 +108,7 @@ public class MasterFlow : MonoBehaviour
 	}
 	
 	IEnumerator MaintenancePhase(){
+		yield return new WaitForSeconds(Random.Range(3.0f, 8.1f));
 		foreach (Beat beat in maintPhase){
 			reader.InitiateCall(beat.knotname);
 			//PopUp(beat.popUpCount);
@@ -119,7 +123,11 @@ public class MasterFlow : MonoBehaviour
 				}
 			}
 			yield return new WaitForSeconds(beat.waitLength);
-		} Debug.Log("Game Over");
+		} DemoEnd();
+	}
+	
+	void DemoEnd(){
+		Debug.Log("Thank you for playing our demo!");
 	}
 	
 	void PopUp(int num){

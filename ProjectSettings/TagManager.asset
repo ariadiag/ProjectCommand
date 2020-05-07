@@ -7,6 +7,8 @@ TagManager:
   - monitor
   - car
   - Breaker
+  - PlayerScreen
+  - Powered
   layers:
   - Default
   - TransparentFX

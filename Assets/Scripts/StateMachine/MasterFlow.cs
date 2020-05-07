@@ -19,6 +19,7 @@ public class MasterFlow : MonoBehaviour
 	public InkReader reader;
 	public Breaker breaker;
 	//public Screen rscreen; Where pop ups happen...?
+	public PopUp pops;
 	
 	public TaskManager tmanager;
 	private bool running; //check if game is running
@@ -35,11 +36,9 @@ public class MasterFlow : MonoBehaviour
 	void Update(){
 	//TUTORIAL
 		//Game Starts (Fade In)
-		//3 screens on; yours flickering - or arrow above
-		
 		
 		if (tutorial){
-			//Player Reads Note -> Arrow point to Breaker
+			//Player Reads Note
 				//Turn Lights On
 			if (player.readNote){
 				Task t1 = tmanager.NewTask("Turn On the Lights");
@@ -52,13 +51,63 @@ public class MasterFlow : MonoBehaviour
 				tutorial = false;
 				mainten = true;
 			}
-			//Read 2nd Note -> Arrow point to supervisor's desk
-				//Blinking file to open/download
 			
 		} else if (mainten){
 			StartCoroutine(MaintenancePhase());
 			mainten = false;
 		}
+		
+		//if ink calledDispatch, then put timer up on big screen
+	
+	}
+	
+	IEnumerator MaintenancePhase(){
+		yield return new WaitForSeconds(Random.Range(3.0f, 8.1f));
+		foreach (Beat beat in maintPhase){
+			reader.InitiateCall(beat.knotname);
+			//PopUp(beat.popUpCount);
+			while(!reader.storyOver){
+				yield return new WaitForSeconds(0.1f);
+			} 
+			PopUp(beat.popUpCount);
+			if (beat.hasBlackOut){
+				breaker.FlipSwitch();
+				while(!breaker.AreLightsOn()){
+					yield return new WaitForSeconds(0.1f);
+				}
+			}
+			yield return new WaitForSeconds(beat.waitLength);
+		} DemoEnd();
+	}
+	
+	void DemoEnd(){
+		Debug.Log("Thank you for playing our demo!");
+	}
+	
+	void PopUp(int num){
+		for (int i = 0; i < num; i++){
+			//PopUp a random
+			pops.Pop();
+		}
+	}
+	
+	public void EstablishBeats(){
+		maintPhase = new List<Beat>();
+		midPhase = new List<Beat>();
+		goPhase = new List<Beat>();
+	//MAINTENANCE
+		string[] knots = {"PhaseEvent2","PhaseEvent3","Fake1","PhaseEvent3.PE3A","PhaseEvent3.PE3B","PhaseEvent4","PhaseEvent4.PE4A","PhaseEvent4.PE4B","PhaseEvent4.PE4C","PhaseEvent5.PE5A","PhaseEvent5.PE5B"};
+		int[] popUps = {1,0,0,0,0,4,0,0,0,0,0};
+		bool[] blackouts = {false,false,true, false,false,true,false,false,false,false,false};
+		int[] waitlengths = {0,8,0,0,0,4,6,0,0,0,0};
+		//Beat b = new Beat("PE2A", 5, true, 10);
+		//Debug.Log(b.knotname);
+		for (int i = 0; i < knots.Length; i++){
+			maintPhase.Add(new Beat(knots[i],popUps[i],blackouts[i],waitlengths[i]));
+		}
+	//MID
+	//GO
+	}
 	
 	//MAINTENANCE PHASE
 	  //Phase Event 2
@@ -105,54 +154,5 @@ public class MasterFlow : MonoBehaviour
 		/*if (medicalDispatch){
 			put timer on screens
 		}*/
-	}
-	
-	IEnumerator MaintenancePhase(){
-		yield return new WaitForSeconds(Random.Range(3.0f, 8.1f));
-		foreach (Beat beat in maintPhase){
-			reader.InitiateCall(beat.knotname);
-			//PopUp(beat.popUpCount);
-			while(!reader.storyOver){
-				yield return new WaitForSeconds(0.1f);
-			} 
-			PopUp(beat.popUpCount);
-			if (beat.hasBlackOut){
-				breaker.FlipSwitch();
-				while(!breaker.AreLightsOn()){
-					yield return new WaitForSeconds(0.1f);
-				}
-			}
-			yield return new WaitForSeconds(beat.waitLength);
-		} DemoEnd();
-	}
-	
-	void DemoEnd(){
-		Debug.Log("Thank you for playing our demo!");
-	}
-	
-	void PopUp(int num){
-		for (int i = 0; i < num; i++){
-			//PopUp a random
-			Debug.Log("POP UP BOO!");
-		}
-	}
-	
-	public void EstablishBeats(){
-		maintPhase = new List<Beat>();
-		midPhase = new List<Beat>();
-		goPhase = new List<Beat>();
-	//MAINTENANCE
-		string[] knots = {"PhaseEvent2","PhaseEvent3","Fake1","PhaseEvent3.PE3A","PhaseEvent3.PE3B","PhaseEvent4","PhaseEvent4.PE4A","PhaseEvent4.PE4B","PhaseEvent4.PE4C","PhaseEvent5.PE5A","PhaseEvent5.PE5B"};
-		int[] popUps = {1,0,0,0,0,4,0,0,0,0,0};
-		bool[] blackouts = {false,false,true, false,false,true,false,false,false,false,false};
-		int[] waitlengths = {0,8,0,0,0,4,6,0,0,0,0};
-		//Beat b = new Beat("PE2A", 5, true, 10);
-		//Debug.Log(b.knotname);
-		for (int i = 0; i < knots.Length; i++){
-			maintPhase.Add(new Beat(knots[i],popUps[i],blackouts[i],waitlengths[i]));
-		}
-	//MID
-	//GO
-	}
 	
 }

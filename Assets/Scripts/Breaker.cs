@@ -17,6 +17,8 @@ public class Breaker : MonoBehaviour
 		public Material glassOn;
 		public Material glassOff;
 		private Material[] mats; //Temp holder for the player materials
+		
+	public GameObject bigScreen;
 	
 	//Values?
 	float ambientValue = 0.9f;
@@ -57,6 +59,9 @@ public class Breaker : MonoBehaviour
 		mats[1] = glassOff;
 		playerScreen.materials = mats;
 		
+		//BigScreen
+		bigScreen.SetActive(false);
+		
 		//Ambient Lighting
 		RenderSettings.ambientIntensity = 0.5f;
 	}
@@ -70,6 +75,9 @@ public class Breaker : MonoBehaviour
 		mats[0] = screenOn;
 		mats[1] = glassOn;
 		playerScreen.materials = mats;
+		
+		//BigScreen
+		bigScreen.SetActive(true);
 		
 		//Ambient Lighting
 		RenderSettings.ambientIntensity = ambientValue;

@@ -113,7 +113,7 @@ public class cameramovement : MonoBehaviour
             }
         }
 
-        Debug.Log(angle + " :::: " + Mathf.Round(x) + " , " + Mathf.Round(y));
+        //Debug.Log(angle + " :::: " + Mathf.Round(x) + " , " + Mathf.Round(y));
 
         if (isSitting)
         {

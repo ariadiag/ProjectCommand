@@ -24,6 +24,11 @@ public class cameramovement : MonoBehaviour
 
     private int screenWidth;
     private int screenHeight;
+
+
+
+
+    //public static void Vector3 GetInspectorRotation(Transform t);
     // Start is called before the first frame update
     void Start()
     {
@@ -57,26 +62,79 @@ public class cameramovement : MonoBehaviour
             }
         }
 
-        if(isSitting)
+        Vector3 angle = transform.eulerAngles;
+        float x = angle.x;
+        float y = angle.y;
+
+        if (Vector3.Dot(transform.up, Vector3.up) >= 0f)
+        {
+            if (angle.x >= 0f && angle.x <= 90f)
+            {
+                x = angle.x;
+            }
+            if (angle.x >= 270f && angle.x <= 360f)
+            {
+                x = angle.x - 360f;
+            }
+        }
+        if (Vector3.Dot(transform.up, Vector3.up) < 0f)
+        {
+            if (angle.x >= 0f && angle.x <= 90f)
+            {
+                x = 180 - angle.x;
+            }
+            if (angle.x >= 270f && angle.x <= 360f)
+            {
+                x = 180 - angle.x;
+            }
+        }
+
+
+        if (Vector3.Dot(transform.right, Vector3.right) >= 0f)
+        {
+            if (angle.y >= 0f && angle.y <= 90f)
+            {
+                y = angle.y;
+            }
+            if (angle.y >= 270f && angle.y <= 360f)
+            {
+                y = angle.y - 360f;
+            }
+        }
+        if (Vector3.Dot(transform.right, Vector3.right) < 0f)
+        {
+            if (angle.y >= 0f && angle.y <= 90f)
+            {
+                y = 180 - angle.y;
+            }
+            if (angle.y >= 270f && angle.y <= 360f)
+            {
+                y = 180 - angle.y;
+            }
+        }
+
+        Debug.Log(angle + " :::: " + Mathf.Round(x) + " , " + Mathf.Round(y));
+
+        if (isSitting)
         {
             Vector3 rotation = transform.eulerAngles;
 
-            if (Input.mousePosition.x > screenWidth - Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).y < RotationMaxRight) //Wright Bros (whatever that means)
+            if (Input.mousePosition.x > screenWidth - Boundary && y < RotationMaxRight) //Wright Bros (whatever that means)
             {
 
                 rotation.y += Camspeed * Time.deltaTime;
             }
-            if (Input.mousePosition.x < 0 + Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).y > RotationMaxLeft) //left
+            if (Input.mousePosition.x < 0 + Boundary && y > RotationMaxLeft) //left
             {
 
                 rotation.y -= Camspeed * Time.deltaTime;
             }
-            if (Input.mousePosition.y > screenHeight - Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x > RotationMaxUp) // up
+            if (Input.mousePosition.y > screenHeight - Boundary && x > RotationMaxUp) // up
             {
 
                 rotation.x -= Camspeed * Time.deltaTime;
             }
-            if (Input.mousePosition.y < 0 + Boundary && UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x < RotationMaxDown) // down
+            if (Input.mousePosition.y < 0 + Boundary && x < RotationMaxDown) // down
             {
                 rotation.x += Camspeed * Time.deltaTime;
             }

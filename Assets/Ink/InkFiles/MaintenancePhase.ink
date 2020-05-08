@@ -16,7 +16,10 @@ VAR r_trust = 10 //Roy's trust in you
 VAR a_trust = 13 //Aaron's trust
 VAR h_trust = 8 //Harper's trust
 VAR s_trust = 10 //Sunny's trust
-VAR medicalDispatch = false //Have Medics been called?
+
+VAR medicalDispatch = false 
+//Have Medics been called? Start Timer.
+VAR showEngineTask = false
 
 //DEBUG MODE
 TODO: DEBUG MODE
@@ -110,7 +113,7 @@ Call Started #Roy
         Oh, thank you. Uh, well, I'll wait here... #Aaron
     *[...]
 //POP UP TUT. PLAYER SEARCHES ENGINE ROOM LOG. 
--(opts)On Hold.
+-(opts)On Hold. #Aaron
     *[Return Call.]
         ->PE2A
     *[<5000>...]
@@ -118,18 +121,18 @@ Call Started #Roy
 
 =PE2A
 Oh, you're back? #Aaron
-    *[From this report, it looks like the emission valves are closed.]
+    *[Seems the emission valves are closed.]
         Okay, let me try this... #Aaron
         Um... nothing is hapening, the temperature is the same. #Aaron
         Maybe, you could look again? #Aaron
         ->PE2A
-    *[Hey, Aaron, it looks like the ventilation stopped working.]
-    *[Hmm, looks like the CO2 levels are clogging the alternator.]
+    *[It looks like the ventilation stopped working.]
+    *[CO2 levels are clogging the alternator.]
         Okay, let me try this... #Aaron
         Um... nothing is hapening, the temperature is the same. #Aaron
         Maybe, you could look again? #Aaron
         ->PE2A
-    *[This it may be the secondary pistons.]
+    *[This may be the secondary pistons.]
         Okay, let me try this... #Aaron
         Um... nothing is hapening, the temperature is the same. #Aaron
         Maybe, you could look again? #Aaron
@@ -138,8 +141,10 @@ Oh, you're back? #Aaron
     *[<5000>...]
         ->PE2A
         
--Well, it looks good over here so far. Thank you so much! Have a good night! #Aaron
-    End Call.
+-Oh! #Aaron
+It worked! #Aaron
+Well, it looks good over here so far. Thank you so much! Have a good night! #Aaron
+    Call Ended.
 -->DONE
 
 ==PhaseEvent3==
@@ -168,6 +173,8 @@ Check our map file and tell me which intercom box is broadcasting. #Harper
         ->DONE
         TODO: Fix the above silent option
 //PLAYER FINDS SHIP INFORMATION; THEN FAKE CALL; THEN POWER GOES OUT
+-Great, let me- #Harper
+    Error in transmission
 -->DONE
 
 =PE3A
@@ -181,9 +188,9 @@ Th-this is Sunny speaking. I mean, uh, Sunny du Vois speaking.  #Sunny
         Oh! S-sorry! #Sunny
     *[...]
         Please don't go! #Sunny
-            *[I'm still here!]
+            **[I'm still here!]
                 Oh... oh, good. #Sunny
-            *[...]
+            **[...]
             ~s_trust = s_trust-1
 
 -Aaron is hurt! He turned the Intercom off, b-but it shocked him. #Sunny
@@ -224,7 +231,7 @@ Hello TPS, this is Medical Dispatch. #MD
             Hello? I can't hear you. Please give me the ship's ID signature. #MD
             ->opts
 //COUNTDOWN TIMER STARTS
--->DONE
+
 
 ==PhaseEvent4==
 *[Switch to Sunny]
@@ -258,14 +265,15 @@ Hello TPS, this is Medical Dispatch. #MD
         
     -I made it to the bridge. It looks sketchy in here. #Harper
         Servos ar- #Harper
-    Fuck. Okay, listen. I know how to fix this.
-        I just need your help rerouting some of the power back to the shields.
-        *[I'll follow your lead.]
-        Good. You have a shield map, don't you? #Harper
-            **[Right, let me check.]
-        *[If you say so, let me get the file.]
-        *[Works for me. I'll be right back.]
-        *[...]
+    Fuck. Okay, listen. I know how to fix this. #Harper
+        I just need your help rerouting some of the power back to the shields. #Harper
+        **[I'll follow your lead.]
+            Good. You have a shield map, don't you? #Harper
+                ***[Right, let me check.]
+                ***[...]
+        **[If you say so, let me get the file.]
+        **[Works for me. I'll be right back.]
+        **[...]
             ~h_trust = h_trust - 1
             Hey! This isn't the time to be slacking! #Harper
             Just... Check whatever files you have and get back to me. #Harper
@@ -323,7 +331,7 @@ Alright, so I need to input something? #Harper
     Give me a second... #Harper
     Got it- wait. #Harper
     Almost... there.... #Harper
-    Done. Give me that sequence again.
+    Done. Give me that sequence again. #Harper
     -(opts)
     *[Beta, Omicron, Alpha, Epsilon.]
         Is that what you said the first time? It's not working. #Harper
@@ -360,8 +368,8 @@ I'm just-I'm tired of this shit. I'm losing my patience. #Harper
 What if... what if this is an outside attack? #Harper
 I don't know... Take precaution with me. #Harper
     *[No, no, I'm with you.]
-    *[Let me get access to our Executive Office.]
-    *[If you say so, I'll get into the Exec Office.]
+    *[Leave it to me, Harper.]
+    *[If you say so.]
     *[...]
 -<i>On Hold.</i>
 -->DONE

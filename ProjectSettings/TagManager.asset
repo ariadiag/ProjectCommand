@@ -9,6 +9,7 @@ TagManager:
   - Breaker
   - PlayerScreen
   - Powered
+  - Mover
   layers:
   - Default
   - TransparentFX

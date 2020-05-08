@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour
 	
 	void Update(){
 		if (pickedup){
-			if (Input.GetKeyDown(KeyCode.Escape)){
+			if (Input.GetKeyDown(KeyCode.Space)){
 				Drop();
 			}
 		}
@@ -26,6 +26,8 @@ public class Interactable : MonoBehaviour
 	
 	public void PickUp(){
 		Debug.Log("TOUCHED NOTE!");
+		player.holdNote = true;
+		player.tutEnd = false;
 		button.interactable = false;
 		this.transform.position = holder.transform.position;
 		this.transform.parent = holder.transform;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 [System.Serializable]
@@ -40,9 +41,13 @@ public class MasterFlow : MonoBehaviour
 		if (tutorial){
 			//Player Reads Note
 				//Turn Lights On
+			if (!player.holdNote){
+				Task t1 = tmanager.NewTask("Read the Note");
+				player.holdNote = true;
+			}
 			if (player.readNote){
-				Task t1 = tmanager.NewTask("Turn On the Lights");
-				//AddArrow(breaker.transform.position);
+				tmanager.RemoveTask("Read the Note");
+				Task t2 = tmanager.NewTask("Turn On the Lights");
 				phaseEnd = true;
 				player.readNote = false;
 			} 
@@ -62,7 +67,7 @@ public class MasterFlow : MonoBehaviour
 	}
 	
 	IEnumerator MaintenancePhase(){
-		yield return new WaitForSeconds(Random.Range(3.0f, 8.1f));
+		yield return new WaitForSeconds(Random.Range(1.5f, 4.9f));
 		foreach (Beat beat in maintPhase){
 			reader.InitiateCall(beat.knotname);
 			//PopUp(beat.popUpCount);
@@ -82,6 +87,7 @@ public class MasterFlow : MonoBehaviour
 	
 	void DemoEnd(){
 		Debug.Log("Thank you for playing our demo!");
+		SceneManager.LoadScene(2);
 	}
 	
 	void PopUp(int num){
@@ -96,10 +102,10 @@ public class MasterFlow : MonoBehaviour
 		midPhase = new List<Beat>();
 		goPhase = new List<Beat>();
 	//MAINTENANCE
-		string[] knots = {"PhaseEvent2","PhaseEvent3","Fake1","PhaseEvent3.PE3A","PhaseEvent3.PE3B","PhaseEvent4","PhaseEvent4.PE4A","PhaseEvent4.PE4B","PhaseEvent4.PE4C","PhaseEvent5.PE5A","PhaseEvent5.PE5B"};
-		int[] popUps = {1,0,0,0,0,4,0,0,0,0,0};
-		bool[] blackouts = {false,false,true, false,false,true,false,false,false,false,false};
-		int[] waitlengths = {0,8,0,0,0,4,6,0,0,0,0};
+		string[] knots = {"PhaseEvent2","PhaseEvent3","Fake1","PhaseEvent3.PE3A","PhaseEvent3.PE3B","PhaseEvent4.PE4A","PhaseEvent4.PE4B","PhaseEvent4.PE4C"};
+		int[] popUps = {1,0,0,0,4,0,0,0};
+		bool[] blackouts = {false,false,true, false,true,false,false,false};
+		int[] waitlengths = {0,8,0,0,4,6,0,0};
 		//Beat b = new Beat("PE2A", 5, true, 10);
 		//Debug.Log(b.knotname);
 		for (int i = 0; i < knots.Length; i++){

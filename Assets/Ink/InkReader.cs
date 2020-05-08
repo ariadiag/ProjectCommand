@@ -12,13 +12,14 @@ public class InkReader : MonoBehaviour
 	private Story story;
 	public bool storyOver;
 	private int maxChoice; //holds the index of the last choice (always the silent choice)
-	public List<string> s_tags; //story tags 0 is always speaker, 1 ?
-	//^^^MAKE PRIVATE
+	private List<string> s_tags; //story tags 0 is always speaker, 1 ?
+	
 	
 	//UI Variables
 	public Button diaBox; //Dialogue Box : Switch this to a designated place in final
 	private TextMeshProUGUI diaText;
 	public Button buttonPrefab;
+	
 	//Speaker Variables
 	private string currentSpeaker;
 	public Image sPORTRAIT;
@@ -72,6 +73,12 @@ public class InkReader : MonoBehaviour
 			if(Input.GetKeyDown("space")){
 				Talk();
 			}
+		}
+		if (storyOver){
+			diaBox.interactable = false;
+			ClearUI();
+			ClearTimer();
+			isReading =false;
 		}
 	}
 	
@@ -150,17 +157,15 @@ public class InkReader : MonoBehaviour
 					case "Sunny":
 						sPORTRAIT.sprite = _SunnyPortrait;
 						break;
-					case "MD":
-						sPORTRAIT.sprite = _MDPortrait;
-						break;
 					default:
 						sPORTRAIT.sprite = _nullPortrait;
 						break;
 				}
 			}
-		} else {
+		}/* 
+		else {
 			sPORTRAIT.sprite = _nullPortrait;
-		}
+		}*/
 	}
 	
 	bool Read(string line){
@@ -227,7 +232,12 @@ public class InkReader : MonoBehaviour
 		} else {
 			storyOver = true;
 			diaBox.interactable = false;
-		} return txt; 
+		} 
+		if (txt == ""){
+			storyOver = true;
+			diaBox.interactable = false;
+		}
+		return txt; 
 	}
 
     IEnumerator Ring(){

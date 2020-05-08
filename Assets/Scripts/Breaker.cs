@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Breaker : MonoBehaviour
 {
-	public bool lightsOn = false;
-	private bool _triggered = false;
+	public bool lightsOn = true;
+	
+	public Animator anim;
 	
 	//Lights
 	public GameObject Light;
@@ -21,6 +22,7 @@ public class Breaker : MonoBehaviour
 	float ambientValue = 0.9f;
 	
 	void Start(){
+		anim = GetComponent<Animator>();
 		playerScreen = GameObject.FindWithTag("PlayerScreen").GetComponent<Renderer>();
 			mats = playerScreen.materials;
 		playerCanvas = GameObject.FindWithTag("Powered");
@@ -46,6 +48,7 @@ public class Breaker : MonoBehaviour
 	}
 	
 	void TurnOff(){
+		anim.Play("Turn Off", 0, 0f);
 		lightsOn = false;
 		
 		//Turn Screen
@@ -59,6 +62,7 @@ public class Breaker : MonoBehaviour
 	}
 	
 	void TurnOn(){
+		anim.Play("Turn ON", 0, 0f);
 		lightsOn = true;
 			
 		//Turn Screen
